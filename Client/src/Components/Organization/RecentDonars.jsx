@@ -2,15 +2,12 @@ import React from "react";
 
 const RecentDonars = () => {
   const Donations = [
-    { user: "John Doe", amount: "$500", project: "Solar Panels", date: "2025-01-20" },
-    { user: "Jane Smith", amount: "$300", project: "Community Garden", date: "2025-01-18" },
-    { user: "Alice Johnson", amount: "$700", project: "Recycling Program", date: "2025-01-15" },
-    { user: "Alice Johnson", amount: "$700", project: "Recycling Program", date: "2025-01-15" },
-    { user: "Alice Johnson", amount: "$700", project: "Recycling Program", date: "2025-01-15" },
-    { user: "Alice Johnson", amount: "$700", project: "Recycling Program", date: "2025-01-15" },
-    { user: "Alice Johnson", amount: "$700", project: "Recycling Program", date: "2025-01-15" },
-    { user: "Alice Johnson", amount: "$700", project: "Recycling Program", date: "2025-01-15" },
-    { user: "Alice Johnson", amount: "$700", project: "Recycling Program", date: "2025-01-15" },
+    { user: "John Doe", amount: "500", project: "Solar Panels", date: "2025-01-20" },
+    { user: "Jane Smith", amount: "300", project: "Community Garden", date: "2025-01-18" },
+    { user: "Alice Johnson", amount: "700", project: "Recycling Program", date: "2025-01-15" },
+    { user: "Alice Johnson", amount: "700", project: "Recycling Program", date: "2025-01-15" },
+    { user: "Alice Johnson", amount: "700", project: "Recycling Program", date: "2025-01-15" },
+    { user: "Alice Johnson", amount: "700", project: "Recycling Program", date: "2025-01-15" },
   ];
 
   return (
@@ -29,7 +26,7 @@ const RecentDonars = () => {
           {Donations.map((Donation, index) => (
             <tr key={index}>
               <td className="py-2 px-4 border-b text-sm text-gray-600">{Donation.user}</td>
-              <td className="py-2 px-4 border-b text-sm text-green-600 font-bold">{Donation.amount}</td>
+              <td className="py-2 px-4 border-b text-sm text-green-600 font-bold">₹ {Donation.amount}</td>
               <td className="py-2 px-4 border-b text-sm text-blue-500 italic">{Donation.project}</td>
               <td className="py-2 px-4 border-b text-sm text-gray-600">{Donation.date}</td>
             </tr>

@@ -29,10 +29,10 @@ const Navbar = () => {
               Volunteers
             </a>
             <a
-              href="/analytics"
+              href="/leaderboard"
               className="text-gray-700 hover:text-green-600 font-medium"
             >
-              Analytics
+              Leaderboard
             </a>
             <a
               href="/contact"

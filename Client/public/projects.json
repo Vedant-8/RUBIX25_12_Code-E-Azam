@@ -1,0 +1,287 @@
+[
+  {
+    "id": "1",
+    "name": "Mumbai Green Oasis Initiative",
+    "description": "A project focused on urban reforestation in Mumbai to improve air quality.",
+    "location": "Mumbai, India",
+    "funding_goal": 50000,
+    "funding_received": 20000,
+    "co2_reduction": 5000,
+    "trees_planted": 1000,
+    "water_saved": 10000,
+    "volunteers": ["Ravi Desai", "Priya Mehta"],
+    "updates": [
+      {
+        "date": "2025-01-15",
+        "description": "Planted 500 trees in Marine Drive area.",
+        "media": ["update1.jpg"]
+      },
+      {
+        "date": "2025-01-17",
+        "description": "Held community event to raise awareness about urban reforestation.",
+        "media": ["community_event.jpg"]
+      },
+      {
+        "date": "2025-01-20",
+        "description": "Planted an additional 500 trees in the Worli Sea Face area.",
+        "media": ["update2.jpg"]
+      }
+    ],
+    "donors": [
+      { "name": "Anil Gupta", "donation": 5000 },
+      { "name": "Sita Mehta", "donation": 3000 }
+    ]
+  },
+  {
+    "id": "2",
+    "name": "Clean Water for Mumbai",
+    "description": "Providing clean drinking water solutions in slum areas of Mumbai.",
+    "location": "Mumbai, India",
+    "funding_goal": 100000,
+    "funding_received": 100000,
+    "co2_reduction": 0,
+    "trees_planted": 0,
+    "water_saved": 200000,
+    "volunteers": ["Amit Kumar", "Rina Shah"],
+    "updates": [
+      {
+        "date": "2025-01-10",
+        "description": "Installed 15 water purification units in Dharavi slum.",
+        "media": ["update2.jpg"]
+      },
+      {
+        "date": "2025-01-12",
+        "description": "Conducted a water conservation awareness workshop for locals.",
+        "media": ["workshop.jpg"]
+      },
+      {
+        "date": "2025-01-14",
+        "description": "Expanded water purification units to 5 additional areas in Bandra.",
+        "media": ["unit_installation.jpg"]
+      }
+    ],
+    "donors": [
+      { "name": "Rajesh Kumar", "donation": 10000 },
+      { "name": "Neelam Soni", "donation": 15000 }
+    ]
+  },
+  {
+    "id": "3",
+    "name": "Mumbai Solar Empowerment Initiative",
+    "description": "Installing solar panels in low-income areas to provide affordable energy.",
+    "location": "Mumbai, India",
+    "funding_goal": 150000,
+    "funding_received": 80000,
+    "co2_reduction": 120000,
+    "trees_planted": 0,
+    "water_saved": 0,
+    "volunteers": ["Meena Kapoor", "Sandeep Joshi"],
+    "updates": [
+      {
+        "date": "2025-01-18",
+        "description": "Installed solar panels in 5 slums in Malad.",
+        "media": ["solar_install_1.jpg"]
+      },
+      {
+        "date": "2025-01-20",
+        "description": "Started training local technicians to maintain solar systems.",
+        "media": ["solar_training_1.jpg"]
+      },
+      {
+        "date": "2025-01-22",
+        "description": "Expanded solar panel installation to 3 additional localities in Andheri.",
+        "media": ["solar_install_2.jpg"]
+      }
+    ],
+    "donors": [
+      { "name": "Vikram Singh", "donation": 10000 },
+      { "name": "Ananya Desai", "donation": 5000 }
+    ]
+  },
+  {
+    "id": "4",
+    "name": "Mumbai Waste Management Reform",
+    "description": "Improving waste management and recycling systems in Mumbai's urban spaces.",
+    "location": "Mumbai, India",
+    "funding_goal": 200000,
+    "funding_received": 200000,
+    "co2_reduction": 30000,
+    "trees_planted": 500,
+    "water_saved": 0,
+    "volunteers": ["Nina Rao", "Karan Sharma"],
+    "updates": [
+      {
+        "date": "2025-01-20",
+        "description": "Launched citywide composting program in Colaba area.",
+        "media": ["compost_launch_1.jpg"]
+      },
+      {
+        "date": "2025-01-21",
+        "description": "Started awareness campaign on recycling and waste reduction.",
+        "media": ["recycling_campaign.jpg"]
+      },
+      {
+        "date": "2025-01-22",
+        "description": "Launched e-waste recycling drives in key areas of Mumbai.",
+        "media": ["ewaste_drive.jpg"]
+      }
+    ],
+    "donors": [
+      { "name": "Geeta Rao", "donation": 20000 },
+      { "name": "Amit Sharma", "donation": 30000 }
+    ]
+  },
+  {
+    "id": "5",
+    "name": "Urban Forest Restoration",
+    "description": "Restoring green spaces in urban areas to improve air quality and biodiversity.",
+    "location": "Pune, India",
+    "funding_goal": 60000,
+    "funding_received": 35000,
+    "co2_reduction": 7000,
+    "trees_planted": 1500,
+    "water_saved": 8000,
+    "volunteers": ["Ankita Patil", "Mohit Deshmukh"],
+    "updates": [
+      {
+        "date": "2025-01-18",
+        "description": "Planted 300 trees near Viman Nagar.",
+        "media": ["tree_planting_1.jpg"]
+      },
+      {
+        "date": "2025-01-20",
+        "description": "Organized a clean-up drive at Kalyani Nagar.",
+        "media": ["cleanup_drive_1.jpg"]
+      }
+    ],
+    "donors": [
+      { "name": "Radhika Mehta", "donation": 8000 },
+      { "name": "Amit Patel", "donation": 5000 }
+    ]
+  },
+  {
+    "id": "6",
+    "name": "Green Mumbai Railways",
+    "description": "Revamping railway stations with plants, trees, and better waste management.",
+    "location": "Mumbai, India",
+    "funding_goal": 120000,
+    "funding_received": 45000,
+    "co2_reduction": 15000,
+    "trees_planted": 700,
+    "water_saved": 12000,
+    "volunteers": ["Neelam Singh", "Ravi Kapoor"],
+    "updates": [
+      {
+        "date": "2025-01-15",
+        "description": "Planted trees at Dadar and Bandra railway stations.",
+        "media": ["station_planting.jpg"]
+      },
+      {
+        "date": "2025-01-18",
+        "description": "Introduced waste bins and recycling stations at stations.",
+        "media": ["waste_bins.jpg"]
+      }
+    ],
+    "donors": [
+      { "name": "Manish Desai", "donation": 15000 },
+      { "name": "Vandana Mehra", "donation": 5000 }
+    ]
+  },
+  {
+    "id": "7",
+    "name": "Mumbai Beach Cleanup Campaign",
+    "description": "Cleaning and restoring the beaches of Mumbai to reduce pollution and protect marine life.",
+    "location": "Mumbai, India",
+    "funding_goal": 40000,
+    "funding_received": 25000,
+    "co2_reduction": 500,
+    "trees_planted": 0,
+    "water_saved": 0,
+    "volunteers": ["Tarun Patil", "Seema Agarwal"],
+    "updates": [
+      {
+        "date": "2025-01-12",
+        "description": "Cleaned Versova Beach and removed over 5 tons of plastic waste.",
+        "media": ["beach_cleanup.jpg"]
+      }
+    ],
+    "donors": [
+      { "name": "Alok Sharma", "donation": 7000 },
+      { "name": "Priya Kapoor", "donation": 3000 }
+    ]
+  },
+  {
+    "id": "8",
+    "name": "Sustainable Agriculture in Rural Maharashtra",
+    "description": "Promoting organic farming and sustainable practices among farmers in rural Maharashtra.",
+    "location": "Maharashtra, India",
+    "funding_goal": 90000,
+    "funding_received": 60000,
+    "co2_reduction": 2000,
+    "trees_planted": 0,
+    "water_saved": 50000,
+    "volunteers": ["Ajay Bhagat", "Sonal Verma"],
+    "updates": [
+      {
+        "date": "2025-01-15",
+        "description": "Conducted organic farming workshops in three villages.",
+        "media": ["workshop_organic_farming.jpg"]
+      },
+      {
+        "date": "2025-01-18",
+        "description": "Provided organic fertilizer kits to farmers.",
+        "media": ["fertilizer_kits.jpg"]
+      }
+    ],
+    "donors": [
+      { "name": "Sunil Yadav", "donation": 10000 },
+      { "name": "Ravina Bhatt", "donation": 12000 }
+    ]
+  },
+  {
+    "id": "9",
+    "name": "Clean Air for Mumbai",
+    "description": "Initiative to install air purifiers and plant trees to improve air quality in Mumbai.",
+    "location": "Mumbai, India",
+    "funding_goal": 70000,
+    "funding_received": 45000,
+    "co2_reduction": 15000,
+    "trees_planted": 200,
+    "water_saved": 0,
+    "volunteers": ["Anita Desai", "Suresh Kumar"],
+    "updates": [
+      {
+        "date": "2025-01-05",
+        "description": "Installed 10 air purifiers in key areas of Mumbai.",
+        "media": ["air_purifier_installation.jpg"]
+      }
+    ],
+    "donors": [
+      { "name": "Ramesh Jadhav", "donation": 5000 },
+      { "name": "Neha Sharma", "donation": 3000 }
+    ]
+  },
+  {
+    "id": "10",
+    "name": "Recycling and Upcycling Project",
+    "description": "Initiative to recycle and upcycle waste materials into usable products.",
+    "location": "Mumbai, India",
+    "funding_goal": 80000,
+    "funding_received": 50000,
+    "co2_reduction": 5000,
+    "trees_planted": 0,
+    "water_saved": 0,
+    "volunteers": ["Nisha Patil", "Kunal Agarwal"],
+    "updates": [
+      {
+        "date": "2025-01-11",
+        "description": "Created 500 upcycled bags from plastic waste.",
+        "media": ["upcycled_bags.jpg"]
+      }
+    ],
+    "donors": [
+      { "name": "Sushil Kumar", "donation": 10000 },
+      { "name": "Reena Joshi", "donation": 8000 }
+    ]
+  }
+]

@@ -1,8 +1,8 @@
 import React from "react";
-import Header from "../components/Header";
-import StatsCard from "../components/StatsCard";
-import ProjectTable from "../components/ProjectTable";
-import RecentDonars from "../Components/RecentDonars";
+import Header from "../../Components/Organization/Header";
+import StatsCard from "../../Components/Organization/StatsCard";
+import ProjectTable from "../../Components/Organization/ProjectTable";
+import RecentDonars from "../../Components/Organization/RecentDonars";
 
 const Dashboard = () => {
   return (
@@ -11,7 +11,7 @@ const Dashboard = () => {
       <div className="p-6 space-y-6">
         {/* Stats Section */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-          <StatsCard title="Total Funds Raised" value="$50,000" />
+          <StatsCard title="Total Funds Raised (in '₹')" value="50,000" />
           <StatsCard title="Active Projects" value="3" />
           <StatsCard title="Volunteer Count" value="8" />
           <StatsCard title="Total Donars" value="25" />

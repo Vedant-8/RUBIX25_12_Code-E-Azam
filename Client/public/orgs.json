@@ -1,0 +1,265 @@
+{
+  "organizations": [
+    {
+      "name": "Mumbai Green Initiative",
+      "co2_reduction": 3000,
+      "trees_planted": 1500,
+      "water_saved": 8000,
+      "volunteers_count": 400,
+      "projects": [
+        {
+          "project_name": "Mangrove Restoration",
+          "co2_reduction": 1200,
+          "trees_planted": 600,
+          "water_saved": 3000,
+          "volunteers": [
+            { "name": "Aarav", "role": "Coordinator" },
+            { "name": "Ria", "role": "Volunteer" }
+          ]
+        },
+        {
+          "project_name": "Urban Green Spaces",
+          "co2_reduction": 1800,
+          "trees_planted": 900,
+          "water_saved": 5000,
+          "volunteers": [
+            { "name": "Karan", "role": "Coordinator" },
+            { "name": "Neha", "role": "Volunteer" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mumbai Coastal Care",
+      "co2_reduction": 2500,
+      "trees_planted": 1300,
+      "water_saved": 6000,
+      "volunteers_count": 300,
+      "projects": [
+        {
+          "project_name": "Coastal Cleanup",
+          "co2_reduction": 1000,
+          "trees_planted": 500,
+          "water_saved": 2000,
+          "volunteers": [
+            { "name": "Ankit", "role": "Coordinator" },
+            { "name": "Priya", "role": "Volunteer" }
+          ]
+        },
+        {
+          "project_name": "Beach Front Plantation",
+          "co2_reduction": 1500,
+          "trees_planted": 800,
+          "water_saved": 4000,
+          "volunteers": [
+            { "name": "Isha", "role": "Coordinator" },
+            { "name": "Rohit", "role": "Volunteer" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Thane Green Foundation",
+      "co2_reduction": 2200,
+      "trees_planted": 1100,
+      "water_saved": 5000,
+      "volunteers_count": 280,
+      "projects": [
+        {
+          "project_name": "Tree Plantation Drives",
+          "co2_reduction": 1000,
+          "trees_planted": 600,
+          "water_saved": 2500,
+          "volunteers": [
+            { "name": "Vikas", "role": "Coordinator" },
+            { "name": "Simran", "role": "Volunteer" }
+          ]
+        },
+        {
+          "project_name": "Water Conservation Projects",
+          "co2_reduction": 1200,
+          "trees_planted": 500,
+          "water_saved": 2500,
+          "volunteers": [
+            { "name": "Manoj", "role": "Coordinator" },
+            { "name": "Sneha", "role": "Volunteer" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Navi Mumbai Eco Warriors",
+      "co2_reduction": 2000,
+      "trees_planted": 1000,
+      "water_saved": 4500,
+      "volunteers_count": 220,
+      "projects": [
+        {
+          "project_name": "Rainwater Harvesting",
+          "co2_reduction": 800,
+          "trees_planted": 400,
+          "water_saved": 2000,
+          "volunteers": [
+            { "name": "Sandeep", "role": "Coordinator" },
+            { "name": "Aditi", "role": "Volunteer" }
+          ]
+        },
+        {
+          "project_name": "Urban Tree Planting",
+          "co2_reduction": 1200,
+          "trees_planted": 600,
+          "water_saved": 2500,
+          "volunteers": [
+            { "name": "Ashish", "role": "Coordinator" },
+            { "name": "Pooja", "role": "Volunteer" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Kalyan Green Mission",
+      "co2_reduction": 2700,
+      "trees_planted": 1400,
+      "water_saved": 7000,
+      "volunteers_count": 350,
+      "projects": [
+        {
+          "project_name": "Parks and Gardens Development",
+          "co2_reduction": 1300,
+          "trees_planted": 700,
+          "water_saved": 3000,
+          "volunteers": [
+            { "name": "Raj", "role": "Coordinator" },
+            { "name": "Ankita", "role": "Volunteer" }
+          ]
+        },
+        {
+          "project_name": "Water Efficiency in Agriculture",
+          "co2_reduction": 1400,
+          "trees_planted": 700,
+          "water_saved": 4000,
+          "volunteers": [
+            { "name": "Vishal", "role": "Coordinator" },
+            { "name": "Ravi", "role": "Volunteer" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Vasai Eco-Activists",
+      "co2_reduction": 2100,
+      "trees_planted": 1000,
+      "water_saved": 5200,
+      "volunteers_count": 300,
+      "projects": [
+        {
+          "project_name": "Tree Plantation",
+          "co2_reduction": 1000,
+          "trees_planted": 500,
+          "water_saved": 2000,
+          "volunteers": [
+            { "name": "Neel", "role": "Coordinator" },
+            { "name": "Sonal", "role": "Volunteer" }
+          ]
+        },
+        {
+          "project_name": "Water Conservation Awareness",
+          "co2_reduction": 1100,
+          "trees_planted": 500,
+          "water_saved": 3200,
+          "volunteers": [
+            { "name": "Amit", "role": "Coordinator" },
+            { "name": "Mansi", "role": "Volunteer" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mumbai Wildlife Rescue",
+      "co2_reduction": 1800,
+      "trees_planted": 800,
+      "water_saved": 4000,
+      "volunteers_count": 260,
+      "projects": [
+        {
+          "project_name": "Wildlife Habitat Protection",
+          "co2_reduction": 800,
+          "trees_planted": 400,
+          "water_saved": 1500,
+          "volunteers": [
+            { "name": "Sohail", "role": "Coordinator" },
+            { "name": "Maya", "role": "Volunteer" }
+          ]
+        },
+        {
+          "project_name": "Urban Bird Conservation",
+          "co2_reduction": 1000,
+          "trees_planted": 400,
+          "water_saved": 2500,
+          "volunteers": [
+            { "name": "Vera", "role": "Coordinator" },
+            { "name": "Lena", "role": "Volunteer" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Pune Green Movement",
+      "co2_reduction": 2800,
+      "trees_planted": 1300,
+      "water_saved": 6500,
+      "volunteers_count": 340,
+      "projects": [
+        {
+          "project_name": "Community Tree Plantation",
+          "co2_reduction": 1300,
+          "trees_planted": 600,
+          "water_saved": 3000,
+          "volunteers": [
+            { "name": "Gaurav", "role": "Coordinator" },
+            { "name": "Nikita", "role": "Volunteer" }
+          ]
+        },
+        {
+          "project_name": "Water Conservation Initiatives",
+          "co2_reduction": 1500,
+          "trees_planted": 700,
+          "water_saved": 3500,
+          "volunteers": [
+            { "name": "Kriti", "role": "Coordinator" },
+            { "name": "Arvind", "role": "Volunteer" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Nashik Green Guardians",
+      "co2_reduction": 2600,
+      "trees_planted": 1200,
+      "water_saved": 6000,
+      "volunteers_count": 310,
+      "projects": [
+        {
+          "project_name": "Reforestation Efforts",
+          "co2_reduction": 1200,
+          "trees_planted": 600,
+          "water_saved": 2500,
+          "volunteers": [
+            { "name": "Sushil", "role": "Coordinator" },
+            { "name": "Rupali", "role": "Volunteer" }
+          ]
+        },
+        {
+          "project_name": "Sustainable Farming Practices",
+          "co2_reduction": 1400,
+          "trees_planted": 600,
+          "water_saved": 3500,
+          "volunteers": [
+            { "name": "Rajesh", "role": "Coordinator" },
+            { "name": "Shalini", "role": "Volunteer" }
+          ]
+        }
+      ]
+    }
+  ]
+}
