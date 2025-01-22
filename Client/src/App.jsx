@@ -1,19 +1,16 @@
 import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from './Components/User/Navbar';
+import Navbar from './Components/Organization/Navbar';
 import UDashboard from './Components/User/UDashboard';
 import ProjectDetail from './Components/User/ProjectDetail';
 import Footer from './Components/Footer';
 import Dashboard from './Pages/Organization/Dashboard';
 import ContactUs from './Pages/Organization/ContactUs';
-<<<<<<< Updated upstream
 import ProjectsPage from './Pages/Organization/ProjectsPage';
 import IndividualProjectPage from './Pages/Organization/IndividualProjectPage';
 import VolunteersPage from './Pages/Organization/VolunteersPage';
 import Leaderboard from './Pages/Organization/Leaderboard';
-=======
 import LandingPage from './Pages/LandingPage';
->>>>>>> Stashed changes
 
 function App() {
   return (

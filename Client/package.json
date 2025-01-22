@@ -10,25 +10,19 @@
     "preview": "vite preview"
   },
   "dependencies": {
-<<<<<<< Updated upstream
-    "chart.js": "^4.4.7",
-=======
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
     "@mui/icons-material": "^6.4.1",
     "@mui/material": "^6.4.1",
->>>>>>> Stashed changes
+    "chart.js": "^4.4.7",
+    "org": "file:",
     "react": "^18.3.1",
     "react-chartjs-2": "^5.3.0",
     "react-dom": "^18.3.1",
-<<<<<<< Updated upstream
-    "react-icons": "^5.4.0",
-    "react-router-dom": "^7.1.3"
-=======
     "react-flip-numbers": "^3.0.9",
+    "react-icons": "^5.4.0",
     "react-router-dom": "^7.1.3",
     "recharts": "^2.15.0"
->>>>>>> Stashed changes
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
