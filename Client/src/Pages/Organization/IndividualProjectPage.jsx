@@ -10,6 +10,9 @@ import {
   CategoryScale,
   LinearScale,
 } from "chart.js";
+import Navbar from "../../Components/Organization/Navbar";
+import Footer from "../../Components/Footer";
+import projectData from "../../assets/projects.json"; // Import the JSON directly
 
 // Register Chart.js components
 ChartJS.register(BarElement, ArcElement, Tooltip, Legend, CategoryScale, LinearScale);
@@ -29,27 +32,24 @@ const IndividualProjectPage = () => {
   });
 
   useEffect(() => {
-    const fetchProjectData = async () => {
-      try {
-        const response = await fetch("/projects.json");
-        const data = await response.json();
-        const selectedProject = data.find((project) => project.id === id);
-        setProject(selectedProject);
-        setUpdates(selectedProject.updates);
-        setVolunteers(
-          selectedProject.volunteers.map((name, index) => ({
-            id: index + 1,
-            name,
-            role: "Volunteer",
-          }))
-        );
-        setDonors(selectedProject.donors);
-      } catch (error) {
-        console.error("Error fetching project data:", error);
-      }
-    };
-
-    fetchProjectData();
+    // Load project data from imported JSON
+    const selectedProject = projectData.find((project) => project.id === id);
+    if (selectedProject) {
+      setProject(selectedProject);
+      setUpdates(selectedProject.updates || []);
+      setVolunteers(
+        selectedProject.volunteers
+          ? selectedProject.volunteers.map((name, index) => ({
+              id: index + 1,
+              name,
+              role: "Volunteer",
+            }))
+          : []
+      );
+      setDonors(selectedProject.donors || []);
+    } else {
+      console.error("Project not found");
+    }
   }, [id]);
 
   const handleAddUpdate = () => {
@@ -112,146 +112,150 @@ const IndividualProjectPage = () => {
   };
 
   return (
-    <div className="p-6 bg-gray-100 min-h-screen">
-      {/* Back Button */}
-      <button
-        onClick={() => navigate(-1)}
-        className="bg-blue-500 text-white px-6 py-2 rounded-md mb-6 shadow-md hover:bg-blue-600 transition duration-300"
-      >
-        Back to Projects
-      </button>
+    <>
+      <Navbar />
+      <div className="p-6 bg-gray-100 min-h-screen">
+        {/* Back Button */}
+        <button
+          onClick={() => navigate(-1)}
+          className="bg-blue-500 text-white px-6 py-2 rounded-md mb-6 shadow-md hover:bg-blue-600 transition duration-300"
+        >
+          Back to Projects
+        </button>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        {/* Left Column */}
-        <div className="space-y-8">
-          {/* Project Details */}
-          <section className="bg-white p-8 rounded-lg shadow-md">
-            <h1 className="text-3xl font-bold text-gray-800">{project.name}</h1>
-            <p className="mt-4 text-gray-600">{project.description}</p>
-            <div className="mt-6 text-gray-700">
-              <p>
-                <span className="font-semibold">Location:</span> {project.location}
-              </p>
-              <p>
-                <span className="font-semibold">Funding:</span> ₹{" "}
-                {project.funding_received} / ₹ {project.funding_goal}
-              </p>
-            </div>
-          </section>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {/* Left Column */}
+          <div className="space-y-8">
+            {/* Project Details */}
+            <section className="bg-white p-8 rounded-lg shadow-md">
+              <h1 className="text-3xl font-bold text-gray-800">{project.name}</h1>
+              <p className="mt-4 text-gray-600">{project.description}</p>
+              <div className="mt-6 text-gray-700">
+                <p>
+                  <span className="font-semibold">Location:</span> {project.location}
+                </p>
+                <p>
+                  <span className="font-semibold">Funding:</span> ₹{" "}
+                  {project.funding_received} / ₹ {project.funding_goal}
+                </p>
+              </div>
+            </section>
 
-          {/* Expanded Stats Section */}
-          <section className="bg-white p-8 rounded-lg shadow-md">
-            <h2 className="text-2xl font-semibold text-gray-800">Project Stats</h2>
-            <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-8">
-              {/* Funding Progress */}
-              <div>
-                <h3 className="text-lg font-bold text-gray-700 mb-4">
-                  Funding Progress (%)
-                </h3>
-                <Doughnut data={fundingProgressData} />
+            {/* Expanded Stats Section */}
+            <section className="bg-white p-8 rounded-lg shadow-md">
+              <h2 className="text-2xl font-semibold text-gray-800">Project Stats</h2>
+              <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-8">
+                {/* Funding Progress */}
+                <div>
+                  <h3 className="text-lg font-bold text-gray-700 mb-4">
+                    Funding Progress (%)
+                  </h3>
+                  <Doughnut data={fundingProgressData} />
+                </div>
+
+                {/* Impact Metrics */}
+                <div>
+                  <h3 className="text-lg font-bold text-gray-700 mb-4">
+                    Impact Metrics
+                  </h3>
+                  <Pie data={impactData} />
+                </div>
               </div>
 
-              {/* Impact Metrics */}
-              <div>
-                <h3 className="text-lg font-bold text-gray-700 mb-4">
-                  Impact Metrics
-                </h3>
-                <Pie data={impactData} />
+              <div className="mt-8 text-gray-700">
+                <p>
+                  <span className="font-semibold">CO2 Reduction:</span>{" "}
+                  {project.co2_reduction} kg
+                </p>
+                <p>
+                  <span className="font-semibold">Trees Planted:</span>{" "}
+                  {project.trees_planted}
+                </p>
+                <p>
+                  <span className="font-semibold">Water Saved:</span>{" "}
+                  {project.water_saved} liters
+                </p>
+                <p>
+                  <span className="font-semibold">Volunteers:</span>{" "}
+                  {volunteers.length}
+                </p>
               </div>
-            </div>
+            </section>
+          </div>
 
-            <div className="mt-8 text-gray-700">
-              <p>
-                <span className="font-semibold">CO2 Reduction:</span>{" "}
-                {project.co2_reduction} kg
-              </p>
-              <p>
-                <span className="font-semibold">Trees Planted:</span>{" "}
-                {project.trees_planted}
-              </p>
-              <p>
-                <span className="font-semibold">Water Saved:</span>{" "}
-                {project.water_saved} liters
-              </p>
-              <p>
-                <span className="font-semibold">Volunteers:</span>{" "}
-                {volunteers.length}
-              </p>
-            </div>
-          </section>
-        </div>
-
-        {/* Right Column */}
-        <div className="space-y-8">
-          {/* Updates Section */}
-          <section className="bg-white p-8 rounded-lg shadow-md">
-            <div className="flex justify-between items-center mb-6">
-              <h2 className="text-2xl font-semibold text-gray-800">Updates</h2>
-              <button
-                onClick={() => setShowModal(true)}
-                className="bg-blue-500 text-white px-4 py-2 rounded-md shadow-md hover:bg-blue-600 transition duration-300"
-              >
-                Add Update
-              </button>
-            </div>
-            <div className="space-y-6">
-              {updates.map((update, index) => (
-                <div
-                  key={index}
-                  className="border border-gray-200 p-4 rounded-lg shadow-md hover:shadow-lg transition duration-300"
+          {/* Right Column */}
+          <div className="space-y-8">
+            {/* Updates Section */}
+            <section className="bg-white p-8 rounded-lg shadow-md">
+              <div className="flex justify-between items-center mb-6">
+                <h2 className="text-2xl font-semibold text-gray-800">Updates</h2>
+                <button
+                  onClick={() => setShowModal(true)}
+                  className="bg-blue-500 text-white px-4 py-2 rounded-md shadow-md hover:bg-blue-600 transition duration-300"
                 >
-                  <p className="text-sm text-gray-500">{update.date}</p>
-                  <p className="mt-4 text-gray-700">{update.description}</p>
-                  {update.image && (
-                    <img
-                      src={update.image}
-                      alt="Update"
-                      className="w-full h-40 object-cover rounded-lg mt-4"
-                    />
-                  )}
-                </div>
-              ))}
-            </div>
-          </section>
+                  Add Update
+                </button>
+              </div>
+              <div className="space-y-6">
+                {updates.map((update, index) => (
+                  <div
+                    key={index}
+                    className="border border-gray-200 p-4 rounded-lg shadow-md hover:shadow-lg transition duration-300"
+                  >
+                    <p className="text-sm text-gray-500">{update.date}</p>
+                    <p className="mt-4 text-gray-700">{update.description}</p>
+                    {update.image && (
+                      <img
+                        src={update.image}
+                        alt="Update"
+                        className="w-full h-40 object-cover rounded-lg mt-4"
+                      />
+                    )}
+                  </div>
+                ))}
+              </div>
+            </section>
 
-          {/* Donors Section */}
-          <section className="bg-white p-8 rounded-lg shadow-md">
-            <h2 className="text-2xl font-semibold text-gray-800">Donors</h2>
-            <div className="space-y-4 mt-6">
-              {donors.map((donor, index) => (
-                <div
-                  key={index}
-                  className="bg-gray-100 p-4 rounded-lg shadow-sm hover:shadow-md transition duration-300"
-                >
-                  <h3 className="text-lg font-bold text-gray-800">
-                    {donor.name}
-                  </h3>
-                  <p className="text-gray-600">₹ {donor.donation}</p>
-                </div>
-              ))}
-            </div>
-          </section>
+            {/* Donors Section */}
+            <section className="bg-white p-8 rounded-lg shadow-md">
+              <h2 className="text-2xl font-semibold text-gray-800">Donors</h2>
+              <div className="space-y-4 mt-6">
+                {donors.map((donor, index) => (
+                  <div
+                    key={index}
+                    className="bg-gray-100 p-4 rounded-lg shadow-sm hover:shadow-md transition duration-300"
+                  >
+                    <h3 className="text-lg font-bold text-gray-800">
+                      {donor.name}
+                    </h3>
+                    <p className="text-gray-600">₹ {donor.donation}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
 
-          {/* Volunteers Section */}
-          <section className="bg-white p-8 rounded-lg shadow-md">
-            <h2 className="text-2xl font-semibold text-gray-800">Volunteers</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
-              {volunteers.map((volunteer) => (
-                <div
-                  key={volunteer.id}
-                  className="bg-gray-100 p-4 rounded-lg shadow-sm hover:shadow-md transition duration-300"
-                >
-                  <h3 className="text-lg font-bold text-gray-800">
-                    {volunteer.name}
-                  </h3>
-                  <p className="text-gray-600">{volunteer.role}</p>
-                </div>
-              ))}
-            </div>
-          </section>
+            {/* Volunteers Section */}
+            <section className="bg-white p-8 rounded-lg shadow-md">
+              <h2 className="text-2xl font-semibold text-gray-800">Volunteers</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+                {volunteers.map((volunteer) => (
+                  <div
+                    key={volunteer.id}
+                    className="bg-gray-100 p-4 rounded-lg shadow-sm hover:shadow-md transition duration-300"
+                  >
+                    <h3 className="text-lg font-bold text-gray-800">
+                      {volunteer.name}
+                    </h3>
+                    <p className="text-gray-600">{volunteer.role}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+          </div>
         </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 };
 

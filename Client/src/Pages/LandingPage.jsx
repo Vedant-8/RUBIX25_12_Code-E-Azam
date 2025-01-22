@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Navbar from "../Components/User/Navbar";
+import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
 import { Typography, Grid, Card, CardContent, Tooltip } from "@mui/material";
 import FlipNumbers from "react-flip-numbers";
@@ -18,6 +18,8 @@ const LandingPage = () => {
   }, []);
 
   return (
+    <>
+    <Navbar />
     <div className="flex flex-col min-h-screen">
       {/* Section 1: Statistics */}
       <section className="relative flex flex-col items-center justify-center h-screen bg-gradient-to-r from-green-50 to-white overflow-hidden">
@@ -78,36 +80,30 @@ const LandingPage = () => {
           <br />
           <br />
           <Grid container spacing={6} justifyContent="center" className="px-4">
-            {[
+            {[ 
               {
                 title: "Campaign Management",
-                description:
-                  "Easily create, manage, and track your eco-friendly campaigns.",
+                description: "Easily create, manage, and track your eco-friendly campaigns.",
               },
               {
                 title: "Donation Tracking",
-                description:
-                  "Keep track of all donations made, ensuring transparency and accountability.",
+                description: "Keep track of all donations made, ensuring transparency and accountability.",
               },
               {
                 title: "Gamification",
-                description:
-                  "Engage users with fun challenges and rewards to drive participation.",
+                description: "Engage users with fun challenges and rewards to drive participation.",
               },
               {
                 title: "Eco-Friendly Rewards",
-                description:
-                  "Redeem points for sustainable products and exclusive discounts.",
+                description: "Redeem points for sustainable products and exclusive discounts.",
               },
               {
                 title: "Real-Time Analytics",
-                description:
-                  "Access insights on campaign performance and environmental impact.",
+                description: "Access insights on campaign performance and environmental impact.",
               },
               {
                 title: "Secure & Scalable",
-                description:
-                  "Built with security and scalability in mind to handle all your needs.",
+                description: "Built with security and scalability in mind to handle all your needs.",
               },
             ].map((feature, index) => (
               <Grid key={index} item xs={12} sm={6} md={4}>
@@ -157,8 +153,32 @@ const LandingPage = () => {
         >
           Sign Up Now
         </button>
+
+        {/* Additional Buttons */}
+        <div className="mt-6 space-x-4">
+          <button
+            onClick={() => (window.location.href = "/user")}
+            className="px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition duration-300"
+          >
+            User
+          </button>
+          <button
+            onClick={() => (window.location.href = "/organisation")}
+            className="px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition duration-300"
+          >
+            Organisation
+          </button>
+          <button
+            onClick={() => (window.location.href = "/admin")}
+            className="px-6 py-3 bg-green-500 text-white rounded-lg hover:bg-green-600 transition duration-300"
+          >
+            Admin
+          </button>
+        </div>
       </section>
     </div>
+    <Footer />
+    </>
   );
 };
 

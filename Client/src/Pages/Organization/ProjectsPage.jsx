@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import AddProjectModal from "../../Components/Organization/AddProjectModal";
+import Navbar from "../../Components/Organization/Navbar";
+import Footer from "../../Components/Footer";
+import projectsData from "../../assets/projects.json"; // Import JSON data
 
 const ProjectsPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -9,38 +12,27 @@ const ProjectsPage = () => {
   const [projects, setProjects] = useState([]); // Initialize with empty array
   const navigate = useNavigate(); // Initialize navigate function
 
-  // Fetch the project data from the JSON file
+  // Use the imported projects data instead of fetching
   useEffect(() => {
-    const fetchProjects = async () => {
-      try {
-        const response = await fetch("./projects.json");
-        const data = await response.json();
+    const transformedProjects = projectsData.map((project) => ({
+      _id: project.id,
+      title: project.name,
+      description: project.description,
+      funding_goal: project.funding_goal,
+      current_funding: project.funding_received,
+      status:
+        project.funding_received >= project.funding_goal
+          ? "completed"
+          : "active",
+      impact_metrics: {
+        co2_reduction: project.co2_reduction,
+        trees_planted: project.trees_planted,
+        water_saved: project.water_saved,
+      },
+    }));
 
-        const transformedProjects = data.map((project) => ({
-          _id: project.id,
-          title: project.name,
-          description: project.description,
-          funding_goal: project.funding_goal,
-          current_funding: project.funding_received,
-          status:
-            project.funding_received >= project.funding_goal
-              ? "completed"
-              : "active",
-          impact_metrics: {
-            co2_reduction: project.co2_reduction,
-            trees_planted: project.trees_planted,
-            water_saved: project.water_saved,
-          },
-        }));
-
-        setProjects(transformedProjects);
-      } catch (error) {
-        console.error("Error fetching project data:", error);
-      }
-    };
-
-    fetchProjects();
-  }, []);
+    setProjects(transformedProjects); // Set the transformed projects
+  }, []); // Empty dependency array means this runs once after initial render
 
   const handleSearch = (e) => setSearchQuery(e.target.value);
   const handleFilterChange = (e) => setFilter(e.target.value);
@@ -58,6 +50,8 @@ const ProjectsPage = () => {
   };
 
   return (
+    <>
+    <Navbar />
     <div className="p-6">
       {/* Header Section */}
       <div className="flex justify-between items-center mb-6">
@@ -95,7 +89,7 @@ const ProjectsPage = () => {
           <div
             key={project._id}
             className="cursor-pointer transform transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-xl rounded-lg border p-5 bg-white shadow-md hover:bg-gray-50"
-            onClick={() => navigate(`/projects/${project._id}`)} // Navigate on click
+            onClick={() => navigate(`/organisation/projects/${project._id}`)} // Navigate on click
           >
             <div className="flex justify-between items-center">
               <h3 className="text-xl font-semibold text-gray-800">{project.title}</h3>
@@ -161,6 +155,8 @@ const ProjectsPage = () => {
         onAddProject={handleAddProject}
       />
     </div>
+    <Footer />
+    </>
   );
 };
 

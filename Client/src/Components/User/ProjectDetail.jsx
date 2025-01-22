@@ -5,6 +5,8 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContai
 import XIcon from "@mui/icons-material/X";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import projectsData from "../../assets/projects.json";
+import Navbar from "./Navbar";
+import Footer from "../Footer";
 
 const ProjectDetail = () => {
   const { id } = useParams();
@@ -31,6 +33,8 @@ const ProjectDetail = () => {
   ];
 
   return (
+    <>
+    <Navbar />
     <Box sx={{ p: 4 }}>
       <Grid container spacing={4}>
         {/* Section 1: Project Name and Description */}
@@ -190,6 +194,8 @@ const ProjectDetail = () => {
         </Grid>
       </Grid>
     </Box>
+    <Footer />
+    </>
   );
 };
 

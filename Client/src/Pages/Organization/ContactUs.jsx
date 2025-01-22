@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import Navbar from "../../Components/Organization/Navbar";
+import Footer from "../../Components/Footer";
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
@@ -38,6 +40,8 @@ const ContactUs = () => {
   };
 
   return (
+    <>
+    <Navbar />
     <div className="min-h-[90vh] flex flex-col items-center justify-center bg-gradient-to-br from-green-100 to-green-300">
       <h1 className="text-4xl font-bold text-gray-800 mb-4 text-center">
         Get in Touch
@@ -116,6 +120,8 @@ const ContactUs = () => {
         </p>
       )}
     </div>
+    <Footer />
+    </>
   );
 };
 

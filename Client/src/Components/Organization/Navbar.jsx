@@ -9,7 +9,7 @@ const Navbar = () => {
         <div className="flex justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
-            <a href="/" className="text-2xl font-bold text-green-600">
+            <a href="/organisation" className="text-2xl font-bold text-green-600">
               Samuhik Sankalpa
             </a>
           </div>
@@ -17,25 +17,25 @@ const Navbar = () => {
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
             <a
-              href="/projects"
+              href="/organisation/projects"
               className="text-gray-700 hover:text-green-600 font-medium"
             >
               Projects
             </a>
             <a
-              href="/volunteers"
+              href="/organisation/volunteers"
               className="text-gray-700 hover:text-green-600 font-medium"
             >
               Volunteers
             </a>
             <a
-              href="/leaderboard"
+              href="/organisation/leaderboard"
               className="text-gray-700 hover:text-green-600 font-medium"
             >
               Leaderboard
             </a>
             <a
-              href="/contact"
+              href="/organisation/contact"
               className="text-gray-700 hover:text-green-600 font-medium"
             >
               Contact Us
@@ -81,25 +81,25 @@ const Navbar = () => {
         <div className="md:hidden">
           <div className="space-y-1 px-2 pb-3">
             <a
-              href="/projects"
+              href="/organisation/projects"
               className="block text-gray-700 hover:text-green-600 font-medium"
             >
               Projects
             </a>
             <a
-              href="/organizations"
+              href="/organisation/organizations"
               className="block text-gray-700 hover:text-green-600 font-medium"
             >
               Organizations
             </a>
             <a
-              href="/about"
+              href="/organisation/about"
               className="block text-gray-700 hover:text-green-600 font-medium"
             >
               About Us
             </a>
             <a
-              href="/contact"
+              href="/organisation/contact"
               className="block text-gray-700 hover:text-green-600 font-medium"
             >
               Contact

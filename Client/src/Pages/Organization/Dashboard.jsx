@@ -3,9 +3,13 @@ import Header from "../../Components/Organization/Header";
 import StatsCard from "../../Components/Organization/StatsCard";
 import ProjectTable from "../../Components/Organization/ProjectTable";
 import RecentDonars from "../../Components/Organization/RecentDonars";
+import Navbar from "../../Components/Organization/Navbar";
+import Footer from "../../Components/Footer";
 
 const Dashboard = () => {
   return (
+    <>
+    <Navbar />
     <div className="min-h-[80vh] bg-gray-100">
       <Header />
       <div className="p-6 space-y-6">
@@ -24,6 +28,8 @@ const Dashboard = () => {
         </div>
       </div>
     </div>
+    <Footer />
+    </>
   );
 };
 
