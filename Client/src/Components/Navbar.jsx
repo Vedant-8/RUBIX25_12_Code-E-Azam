@@ -16,7 +16,7 @@ const Navbar = () => {
     cursor: "pointer",
     fontSize: "1rem",
     fontWeight: "500",
-    padding: "0.5rem 1.5rem",
+    padding: "0.1rem 1.5rem",
     borderRadius: "0.5rem",
     transition: "all 0.3s ease-in-out",
     textTransform: "capitalize",
@@ -70,9 +70,10 @@ const Navbar = () => {
           </IconButton>
         </Box>
 
-        {/* Signup Button */}
-        <Box className="flex gap-4">
-          <NavButton onClick={() => navigate("/")}>Signup</NavButton>
+        {/* Signup and Login Buttons */}
+        <Box className="flex gap-2">
+          <NavButton onClick={() => navigate("/login")}>Login</NavButton>
+          <NavButton onClick={() => navigate("/signup")}>Signup</NavButton>
         </Box>
       </Toolbar>
     </AppBar>

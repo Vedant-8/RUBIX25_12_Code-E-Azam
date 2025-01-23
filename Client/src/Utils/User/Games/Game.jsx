@@ -8,12 +8,8 @@ function Game() {
   return (
     <>
     <Navbar />
-    <div>
-    </div>
-      <div className='body'>
-        <div className='block'>
+      <div>
         <PlinkoBoard></PlinkoBoard>
-        </div>  
       </div>
       <Footer />
     </>
