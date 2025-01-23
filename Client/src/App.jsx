@@ -11,6 +11,9 @@ import Leaderboard from './Pages/Organization/Leaderboard';
 import LandingPage from './Pages/LandingPage';
 import Rewards from './Components/User/Rewards';
 import Volunteer from './Components/User/Volunteer';
+import Shop from './Components/User/Shop';
+import Blog from './Components/User/Blog';
+import Suggestion from './Utils/User/Suggestion';
 
 import AnalyticsPage from './Pages/Admin/AnalyticsPage'
 import ADashboard from './Pages/Admin/ADashboard'
@@ -28,6 +31,9 @@ function App() {
         <Route path="/user/project/:id" element={<ProjectDetail />} />
         <Route path="/user/volunteer" element={<Volunteer />} />
         <Route path="/user/rewards" element={<Rewards />} />
+        <Route path="/user/shop" element={<Shop />} />
+        <Route path="/user/educational" element={<Blog />} />
+        <Route path="/user/suggestion" element={<Suggestion />} />
 
         {/* Organization routes */}
         <Route path="/organisation" element={<Dashboard />} />

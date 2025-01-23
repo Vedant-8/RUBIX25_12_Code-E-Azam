@@ -53,6 +53,7 @@ const Navbar = () => {
           <NavButton onClick={() => navigate("/user/shop")}>Shop</NavButton>
           <NavButton onClick={() => navigate("/user/volunteer")}>Volunteer</NavButton>
           <NavButton onClick={() => navigate("/user/rewards")}>Rewards</NavButton>
+          <NavButton onClick={() => navigate("/user/suggestion")}>AI suggestion for Donation</NavButton>
           <NavButton onClick={() => navigate("/user/educational")}>
             Educational
           </NavButton>
