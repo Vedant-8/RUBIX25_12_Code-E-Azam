@@ -17,6 +17,7 @@ import Suggestion from './Utils/User/Suggestion';
 
 import AnalyticsPage from './Pages/Admin/AnalyticsPage'
 import ADashboard from './Pages/Admin/ADashboard'
+import CostEstimation from './Utils/Organisation/CostEstimation';
 import AdminShopPage from './Pages/Admin/AdminShopPage'
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
         <Route path="/organisation/projects/:id" element={<IndividualProjectPage />} />
         <Route path="/organisation/volunteers" element={<VolunteersPage />} />
         <Route path="/organisation/leaderboard" element={<Leaderboard />} />
+        <Route path="/organisation/costEstimation" element={<CostEstimation />} />
 
         {/* Admin routes */}
         <Route path="/admin" element={<ADashboard />}/>

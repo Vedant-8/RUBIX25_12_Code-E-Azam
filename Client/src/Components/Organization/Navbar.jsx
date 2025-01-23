@@ -18,7 +18,10 @@ const Navbar = () => {
         <div className="flex justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
-            <a href="/organisation" className="text-2xl font-bold text-green-600">
+            <a
+              href="/organisation"
+              className="text-2xl font-bold text-green-600"
+            >
               Samuhik Sankalpa
             </a>
           </div>
@@ -30,6 +33,12 @@ const Navbar = () => {
               className="text-gray-700 hover:text-green-600 font-medium"
             >
               Projects
+            </a>
+            <a
+              href="/organisation/costEstimation"
+              className="text-gray-700 hover:text-green-600 font-medium"
+            >
+              Cost Estimation
             </a>
             <a
               href="/organisation/volunteers"

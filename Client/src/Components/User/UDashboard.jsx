@@ -6,6 +6,7 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import projectsData from "../../assets/projects.json";
 import Navbar from "./Navbar";
 import Footer from "../Footer";
+import LiveStream from "../../Utils/User/LiveStream";
 
 const UDashboard = () => {
   const [filteredProjects, setFilteredProjects] = useState([]);
@@ -81,6 +82,8 @@ const UDashboard = () => {
         background: "linear-gradient(to right, #e8f5e9, #ffffff)",
       }}
     >
+    {/* Here new section of live events will come */}
+    <LiveStream />
       <Box
         sx={{
           display: "flex",
