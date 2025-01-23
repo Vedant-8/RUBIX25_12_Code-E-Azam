@@ -90,65 +90,56 @@ const controllers_reg = async (req, res) => {
 
 
 
-const controllers_login=async (req,res)=>
-    {
-        console.log("control reached");
-        const body=req.body;
-        console.log(body.email);
-        console.log(body.password);
-        var search_one=await model_users.findOne({email: body.email});
-        if(!search_one)
-        {
-            search_one=await model_orgs.findOne({email: body.email})
+const controllers_login = async (req, res) => {
+    const body = req.body;
+    console.log(body.email);
+    console.log(body.password);
+  
+    let search_one = await model_users.findOne({ email: body.email });
+    if (!search_one) {
+      search_one = await model_orgs.findOne({ email: body.email });
+    }
+  
+    if (search_one) {
+      try {
+        console.log(search_one);
+  
+        if (search_one.password === body.password) {
+          if (search_one.role === "User") {
+            req.session.user = { email: body.email, role: "User" };
+            console.log(req.session.user);
+            req.session.save((err) => {
+              if (err) {
+                console.error("Session save error:", err);
+              }
+            });
+            return res.json({ msg: "as user", role: "User" });  // Send role as response
+          } else {
+            req.session.user = {
+              email: body.email,
+              role: "Organisation",
+              orgs_id: search_one.org_id,
+            };
+            console.log(req.session.user);
+            req.session.save((err) => {
+              if (err) {
+                console.error("Session save error:", err);
+              }
+            });
+            return res.json({ msg: "as org", role: "Organisation" });  // Send role as response
+          }
+        } else {
+          res.json({ msg: "Passwords don't match" });
         }
-        if(search_one){ //&& search_one.password===body.password){
-            try{
-    
-                console.log(search_one);
-                if(search_one.password==body.password)
-                {
-                
-                if(search_one.role=="User")
-                {
-                    req.session.user={email: body.email, role:"User"};
-                    console.log(req.session.user);
-                     req.session.save((err) => {
-                        if (err) {
-                            console.error("Session save error:", err);
-                        }
-                    })
-                   res.json("as user");
-                }
-                else
-                {
-                    req.session.user={email: body.email, role:"Organisation", orgs_id: search_one.org_id};
-                    console.log(req.session.user);
-                    req.session.save((err) => {
-                        if (err) {
-                            console.error("Session save error:", err);
-                        }
-                    })
-                    res.json("as org");
-                }
-              
-                }
-                else
-                {
-                    res.json({msg: "Passwords don't match"});
-                }
-            }
-            catch(err){
-                console.log(err);
-                res.end({msg: "error"});
-            }
-        }
-        else
-        {
-    
-            res.json({msg: "Email doesn't exist"});
-        }
-    
-    };
+      } catch (err) {
+        console.log(err);
+        res.end({ msg: "error" });
+      }
+    } else {
+      res.json({ msg: "Email doesn't exist" });
+    }
+  };
+  
 
 
     const logout=async (req,res)=>{
