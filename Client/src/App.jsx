@@ -19,6 +19,8 @@ import AnalyticsPage from './Pages/Admin/AnalyticsPage'
 import ADashboard from './Pages/Admin/ADashboard'
 import CostEstimation from './Utils/Organisation/CostEstimation';
 import AdminShopPage from './Pages/Admin/AdminShopPage'
+import Login from './Pages/Login'
+import Signup from './Pages/Signup';
 
 function App() {
   return (
@@ -27,6 +29,9 @@ function App() {
       <Routes>
         {/* Define routes here */}
         <Route path="/" element={<LandingPage />} />
+
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
 
         {/* User routes */}
         <Route path="/user" element={<UDashboard />} />

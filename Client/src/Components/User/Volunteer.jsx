@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Grid, Card, Typography, TextField, Box } from "@mui/material";
-import { styled } from "@mui/material/styles";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
 import projectsData from "../../assets/projects.json";
-import Snackbar from "@mui/material/Snackbar";
 import Navbar from "./Navbar";
 import Footer from "../Footer";
 
@@ -26,12 +22,11 @@ const Volunteer = () => {
         ...project,
         funding_received_percentage: Math.min(
           (project.funding_received / project.funding_goal) * 100,
-          100 // Ensure it doesn't exceed 100%
+          100
         ),
       }));
     };
 
-    // Set initial projects with calculated percentages
     setFilteredProjects(calculateFundingPercentage(projectsData));
   }, []);
 
@@ -59,23 +54,6 @@ const Volunteer = () => {
     }
   }, [searchTerm]);
 
-  const StyledCard = styled(Card)(({ theme }) => ({
-    transition: "transform 0.3s ease, box-shadow 0.3s ease",
-    "&:hover": {
-      transform: "scale(1.05)",
-      boxShadow: "0 8px 20px rgba(0, 0, 0, 0.2)",
-    },
-    backgroundColor: "#e6f9e6",
-    borderRadius: "12px",
-    overflow: "hidden",
-    height: "320px",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-between",
-    padding: "16px",
-    cursor: "pointer",
-  }));
-
   const handleVolunteerClick = (project) => {
     setSelectedProject(project);
     setShowForm(true);
@@ -94,254 +72,128 @@ const Volunteer = () => {
     setSnackbarMessage(`Your volunteer form for ${selectedProject.name} is submitted!`);
     setShowForm(false);
     setVolunteerForm({ name: "", email: "", phone: "", hoursAvailable: "" });
+  
+    // Clear the snackbar message after 2 seconds
+    setTimeout(() => {
+      setSnackbarMessage("");
+    }, 2000);
   };
+  
 
   return (
     <>
-    <Navbar />
-    <Box
-      sx={{
-        minHeight: "100vh",
-        background: "linear-gradient(to right, #e8f5e9, #ffffff)",
-      }}
-    >
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          py: 4,
-        }}
-      >
-        <TextField
-          variant="outlined"
-          label="Search Projects"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          sx={{
-            mb: 4,
-            backgroundColor: "#ffffff",
-            borderRadius: "20px",
-            width: "80%",
-            maxWidth: "500px",
-            "& .MuiOutlinedInput-root": {
-              boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.1)",
-            },
-            "& .MuiInputLabel-root": { color: "green" },
-          }}
-        />
-      </Box>
-
-      <Box
-        sx={{
-          flexGrow: 1,
-          display: "flex",
-          justifyContent: "center",
-          px: 4,
-          pb: 4,
-        }}
-      >
-        <Grid container spacing={4} sx={{ maxWidth: "1200px" }}>
-          {filteredProjects.map((project) => (
-            project.volunteer_requirement && (
-              <Grid key={project.id} item xs={12} sm={6} md={4}>
-                <StyledCard>
-                  <Box
-                    sx={{
-                      height: "180px",
-                      backgroundColor: "#f0f0f0",
-                      borderRadius: "12px",
-                      marginBottom: "12px",
-                      display: "flex",
-                      justifyContent: "center",
-                      alignItems: "center",
-                    }}
+      <Navbar />
+      <div className="min-h-screen bg-gradient-to-r from-[#e8f5e9] to-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="flex justify-center mb-12">
+            <input
+              type="text"
+              placeholder="Search Projects"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full max-w-lg bg-white rounded-lg shadow-lg px-6 py-3 text-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-green-300"
+            />
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+            {filteredProjects.map(
+              (project) =>
+                project.volunteer_requirement && (
+                  <div
+                    key={project.id}
+                    className="bg-green-50 rounded-lg shadow-xl hover:shadow-2xl transition-all transform duration-300 p-6 cursor-pointer"
                   >
-                    <Typography variant="body2" sx={{ color: "gray" }}>
-                      Image Placeholder
-                    </Typography>
-                  </Box>
-
-                  <Box
-                    sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "flex-end",
-                      marginBottom: "8px",
-                    }}
-                  >
-                    <LocationOnIcon
-                      sx={{ color: "gray", marginRight: "4px", fontSize: "1rem" }}
-                    />
-                    <Typography
-                      variant="body2"
-                      sx={{
-                        textAlign: "right",
-                        color: "gray",
-                        fontSize: "0.9rem",
-                      }}
-                    >
+                    <p className="text-right text-gray-500 text-sm mb-2 flex items-center">
+                      <span className="material-icons text-gray-400 mr-1">📍</span>
                       {project.location}
-                    </Typography>
-                  </Box>
+                    </p>
+                    <h3 className="text-xl font-semibold text-center text-green-600 mb-2">
+                      {project.name}
+                    </h3>
+                    <p className="text-gray-600 text-center mb-4">{project.short_description}</p>
+                    <div className="flex justify-center">
+                      <button
+                        onClick={() => handleVolunteerClick(project)}
+                        className="bg-green-600 text-white py-2 px-6 rounded-lg shadow-lg hover:bg-green-700 transition duration-300"
+                      >
+                        Volunteer Now
+                      </button>
+                    </div>
+                  </div>
+                )
+            )}
+          </div>
+        </div>
 
-                  <Typography
-                    variant="h6"
-                    sx={{
-                      fontWeight: "bold",
-                      textAlign: "center",
-                      marginBottom: "8px",
-                    }}
+        {showForm && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+            <div className="bg-white p-8 rounded-lg shadow-2xl max-w-lg w-full">
+              <h3 className="text-2xl font-semibold mb-6">
+                Volunteer for {selectedProject.name}
+              </h3>
+              <form onSubmit={handleSubmitForm} className="space-y-4">
+                <input
+                  type="text"
+                  name="name"
+                  value={volunteerForm.name}
+                  onChange={handleInputChange}
+                  placeholder="Your Name"
+                  className="w-full p-4 border border-gray-300 rounded-lg shadow-md"
+                  required
+                />
+                <input
+                  type="email"
+                  name="email"
+                  value={volunteerForm.email}
+                  onChange={handleInputChange}
+                  placeholder="Your Email"
+                  className="w-full p-4 border border-gray-300 rounded-lg shadow-md"
+                  required
+                />
+                <input
+                  type="text"
+                  name="phone"
+                  value={volunteerForm.phone}
+                  onChange={handleInputChange}
+                  placeholder="Your Phone"
+                  className="w-full p-4 border border-gray-300 rounded-lg shadow-md"
+                  required
+                />
+                <input
+                  type="number"
+                  name="hoursAvailable"
+                  value={volunteerForm.hoursAvailable}
+                  onChange={handleInputChange}
+                  placeholder="Hours Available per week"
+                  className="w-full p-4 border border-gray-300 rounded-lg shadow-md"
+                  required
+                />
+                <div className="flex justify-between">
+                  <button
+                    type="button"
+                    onClick={() => setShowForm(false)}
+                    className="bg-red-500 text-white py-2 px-6 rounded-lg hover:bg-red-600 transition duration-300"
                   >
-                    {project.name}
-                  </Typography>
-
-                  <Typography
-                    variant="body2"
-                    sx={{
-                      color: "gray",
-                      textAlign: "center",
-                      marginBottom: "8px",
-                    }}
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    className="bg-green-600 text-white py-2 px-6 rounded-lg hover:bg-green-700 transition duration-300"
                   >
-                    {project.short_description}
-                  </Typography>
+                    Submit
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        )}
 
-                  <Box sx={{ textAlign: "center" }}>
-                    <button
-                      style={{
-                        backgroundColor: "green",
-                        color: "white",
-                        border: "none",
-                        padding: "8px 16px",
-                        borderRadius: "8px",
-                        cursor: "pointer",
-                      }}
-                      onClick={() => handleVolunteerClick(project)}
-                    >
-                      Volunteer
-                    </button>
-                  </Box>
-                </StyledCard>
-              </Grid>
-            )
-          ))}
-        </Grid>
-      </Box>
-
-      {/* Volunteer Form */}
-      {showForm && (
-        <Box
-          sx={{
-            position: "fixed",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundColor: "rgba(0, 0, 0, 0.5)",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Box
-            sx={{
-              backgroundColor: "white",
-              padding: "20px",
-              borderRadius: "8px",
-              maxWidth: "500px",
-              width: "100%",
-              boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-            }}
-          >
-            <Typography variant="h6" sx={{ marginBottom: "16px" }}>
-              Volunteer for {selectedProject.name}
-            </Typography>
-
-            <form onSubmit={handleSubmitForm}>
-              <TextField
-                label="Name"
-                name="name"
-                value={volunteerForm.name}
-                onChange={handleInputChange}
-                fullWidth
-                required
-                sx={{ marginBottom: "12px" }}
-              />
-              <TextField
-                label="Email"
-                name="email"
-                value={volunteerForm.email}
-                onChange={handleInputChange}
-                fullWidth
-                required
-                sx={{ marginBottom: "12px" }}
-              />
-              <TextField
-                label="Phone"
-                name="phone"
-                value={volunteerForm.phone}
-                onChange={handleInputChange}
-                fullWidth
-                required
-                sx={{ marginBottom: "12px" }}
-              />
-              <TextField
-                label="Hours Available"
-                name="hoursAvailable"
-                type="number"
-                value={volunteerForm.hoursAvailable}
-                onChange={handleInputChange}
-                fullWidth
-                required
-                sx={{ marginBottom: "12px" }}
-              />
-              <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-                <button
-                  type="button"
-                  onClick={() => setShowForm(false)}
-                  style={{
-                    backgroundColor: "lightcoral",  // Light red color
-                    color: "#fff",
-                    padding: "8px 16px",
-                    border: "none",
-                    borderRadius: "8px",
-                    cursor: "pointer",
-                  }}
-                >
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  style={{
-                    backgroundColor: "green",
-                    color: "white",
-                    padding: "8px 16px",
-                    border: "none",
-                    borderRadius: "8px",
-                    cursor: "pointer",
-                  }}
-                >
-                  Submit
-                </button>
-              </Box>
-            </form>
-          </Box>
-        </Box>
-      )}
-
-      {/* Snackbar */}
-      {snackbarMessage && (
-        <Snackbar
-          open={true}
-          autoHideDuration={3000}
-          onClose={() => setSnackbarMessage("")}
-          message={snackbarMessage}
-          sx={{ backgroundColor: "#a8e6a0" }} // Light green color for snackbar
-        />
-      )}
-    </Box>
-    <Footer />
+        {snackbarMessage && (
+          <div className="fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-green-200 text-green-800 py-2 px-6 rounded-lg shadow-lg">
+            {snackbarMessage}
+          </div>
+        )}
+      </div>
+      <Footer />
     </>
   );
 };

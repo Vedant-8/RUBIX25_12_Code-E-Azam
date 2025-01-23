@@ -1,47 +1,12 @@
 import React, { useState } from "react";
-import { styled } from "@mui/material/styles";
-import {
-  Button,
-  TextField,
-  Card,
-  CardContent,
-  Typography,
-  Grid,
-  Box,
-  IconButton,
-} from "@mui/material";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import productsData from "../../assets/shop.json";
 import Navbar from "./Navbar";
 import Footer from "../Footer";
 
-const StyledCard = styled(Card)(({ theme }) => ({
-  transition: "transform 0.3s ease, box-shadow 0.3s ease",
-  "&:hover": {
-    transform: "scale(1.05)",
-    boxShadow: "0 8px 20px rgba(144, 238, 144, 0.5)", // Light green box shadow
-  },
-  backgroundColor: "#f7f9fc",
-  borderRadius: "12px",
-  overflow: "hidden",
-  padding: "16px",
-  cursor: "pointer",
-}));
-
-const StyledButton = styled(Button)(({ theme }) => ({
-  borderRadius: "8px",
-  textTransform: "none",
-  fontWeight: "bold",
-  backgroundColor: "green",
-  color: "white",
-  "&:hover": {
-    backgroundColor: "#228b22",
-  },
-}));
-
 const Shop = () => {
   const [searchText, setSearchText] = useState("");
   const [cartItems, setCartItems] = useState([]);
+  const [isCartOpen, setIsCartOpen] = useState(false);
 
   const filteredProducts = productsData.products.filter((product) =>
     product.name.toLowerCase().includes(searchText.toLowerCase())
@@ -62,124 +27,193 @@ const Shop = () => {
     });
   };
 
+  const removeFromCart = (productId) => {
+    setCartItems((prevCart) =>
+      prevCart.filter((item) => item.id !== productId)
+    );
+  };
+
+  const increaseQuantity = (productId) => {
+    setCartItems((prevCart) =>
+      prevCart.map((item) =>
+        item.id === productId
+          ? { ...item, quantity: item.quantity + 1 }
+          : item
+      )
+    );
+  };
+
+  const decreaseQuantity = (productId) => {
+    setCartItems((prevCart) =>
+      prevCart.map((item) =>
+        item.id === productId && item.quantity > 1
+          ? { ...item, quantity: item.quantity - 1 }
+          : item
+      )
+    );
+  };
+
+  const toggleCart = () => {
+    setIsCartOpen((prevState) => !prevState);
+  };
+
+  const closeCart = () => {
+    setIsCartOpen(false);
+  };
+
+  const totalPrice = cartItems.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0
+  );
+
   return (
     <>
       <Navbar />
-      <Box
-        sx={{
-          minHeight: "100vh",
-          background: "linear-gradient(to bottom, #d4edda, #ffffff)", // Light green and white gradient
-          py: 4,
-          px: 2,
-        }}
-      >
+      <div className="min-h-screen bg-gradient-to-b from-green-100 to-white py-12 px-4">
         {/* Top Bar */}
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "flex-end", // Align cart button to the right
-            alignItems: "center",
-            mb: 4,
-            px: 2,
-          }}
-        >
-          <IconButton
-            sx={{
-              backgroundColor: "#32cd32",
-              color: "white",
-              fontSize: "1.5rem",
-              "&:hover": { backgroundColor: "#228b22" },
-              padding: "12px",
-            }}
-          >
-            <ShoppingCartIcon />
-            Cart
-          </IconButton>
-          <Typography
-            sx={{
-              ml: 1,
-              fontWeight: "bold",
-              fontSize: "1.2rem",
-              color: "#32cd32",
-            }}
-          >
-            {cartItems.length}
-          </Typography>
-        </Box>
+        <div className="flex justify-between items-center mb-8 px-4">
+          {/* Search Bar */}
+          <div className="w-full max-w-lg">
+            <input
+              type="text"
+              className="w-full py-2 px-4 border rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-green-500"
+              placeholder="Search products..."
+              value={searchText}
+              onChange={(e) => setSearchText(e.target.value)}
+            />
+          </div>
 
-        {/* Search Bar */}
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            mb: 4,
-          }}
-        >
-          <TextField
-            label="Search products..."
-            variant="outlined"
-            fullWidth
-            value={searchText}
-            onChange={(e) => setSearchText(e.target.value)}
-            sx={{
-              maxWidth: "600px",
-              mx: 2,
-              "& .MuiOutlinedInput-root": {
-                boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.1)",
-                borderRadius: "12px",
-              },
-            }}
-          />
-        </Box>
+          {/* Cart Button */}
+          <div className="relative">
+            <button
+              onClick={toggleCart}
+              className="flex items-center bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-lg shadow-lg transition duration-300 ease-in-out"
+            >
+              {/* Inline SVG for Shopping Cart Icon */}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="h-6 w-6 mr-2"
+              >
+                <path d="M6 2L6 6H20L18 18H6L4 6H1" />
+              </svg>
+              <span className="text-lg">Cart</span>
+              <span className="ml-2 font-bold text-xl">{cartItems.length}</span>
+            </button>
+
+            {/* Cart Modal */}
+            {isCartOpen && (
+              <div
+                className="absolute top-12 right-0 bg-white shadow-lg rounded-lg w-96 max-h-[70vh] z-50 overflow-y-auto"
+                style={{ boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)" }}
+              >
+                <div className="flex justify-between items-center border-b p-4">
+                  <h3 className="text-lg font-semibold">Your Cart</h3>
+                  <button
+                    onClick={closeCart}
+                    className="text-gray-600 hover:text-gray-800"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-6 w-6"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    </svg>
+                  </button>
+                </div>
+
+                {/* Product List Section */}
+                <div className="p-4">
+                  {cartItems.length === 0 ? (
+                    <p className="text-center text-gray-600">No items in the cart.</p>
+                  ) : (
+                    cartItems.map((item) => (
+                      <div
+                        key={item.id}
+                        className="flex justify-between items-center mb-4"
+                      >
+                        <div>
+                          <p className="font-semibold">{item.name}</p>
+                          <p className="text-gray-500">₹{item.price.toFixed(2)}</p>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <button
+                            className="text-gray-600 hover:text-gray-800"
+                            onClick={() => decreaseQuantity(item.id)}
+                          >
+                            -
+                          </button>
+                          <span className="text-sm text-gray-600">x{item.quantity}</span>
+                          <button
+                            className="text-gray-600 hover:text-gray-800"
+                            onClick={() => increaseQuantity(item.id)}
+                          >
+                            +
+                          </button>
+                        </div>
+                        <button
+                          onClick={() => removeFromCart(item.id)}
+                          className="text-red-500 hover:text-red-700"
+                        >
+                          Remove
+                        </button>
+                      </div>
+                    ))
+                  )}
+                </div>
+
+                {/* Total Price and Buy Button */}
+                <div className="border-t p-4 flex justify-between items-center">
+                  <div className="font-semibold text-lg">Total:</div>
+                  <div className="text-green-600 text-lg">₹{totalPrice.toFixed(2)}</div>
+                </div>
+                <button className="w-full py-2 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-lg mt-4">
+                  Buy Now
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
 
         {/* Product Grid */}
-        <Grid container spacing={4} sx={{ px: 4 }}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
           {filteredProducts.map((product) => (
-            <Grid item xs={12} sm={6} md={4} key={product.id}>
-              <StyledCard>
-                <CardContent>
-                  <Typography
-                    variant="h6"
-                    sx={{
-                      fontWeight: "bold",
-                      mb: 2,
-                      textAlign: "center",
-                      color: "green",
-                    }}
-                  >
-                    {product.name}
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    sx={{ color: "gray", textAlign: "center", mb: 2 }}
-                  >
-                    {product.category}
-                  </Typography>
-                  <Typography
-                    variant="h5"
-                    sx={{
-                      fontWeight: "bold",
-                      color: "green",
-                      textAlign: "center",
-                      mb: 3,
-                    }}
-                  >
-                    ₹{product.price.toFixed(2)}
-                  </Typography>
-                  <StyledButton
-                    variant="contained"
-                    fullWidth
-                    onClick={() => addToCart(product)}
-                  >
-                    Add to Cart
-                  </StyledButton>
-                </CardContent>
-              </StyledCard>
-            </Grid>
+            <div
+              key={product.id}
+              className="bg-white rounded-lg shadow-lg transition-transform transform hover:scale-105 hover:shadow-xl p-6 flex flex-col justify-between"
+            >
+              <div>
+                <h3 className="text-xl font-semibold text-green-600 text-center mb-2">
+                  {product.name}
+                </h3>
+                <p className="text-gray-600 text-center mb-2">{product.category}</p>
+                <p className="text-2xl font-bold text-green-600 text-center mb-4">
+                  ₹{product.price.toFixed(2)}
+                </p>
+              </div>
+              <button
+                className="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 rounded-lg transition duration-300 ease-in-out"
+                onClick={() => addToCart(product)}
+              >
+                Add to Cart
+              </button>
+            </div>
           ))}
-        </Grid>
-      </Box>
+        </div>
+      </div>
       <Footer />
     </>
   );

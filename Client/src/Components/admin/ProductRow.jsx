@@ -6,7 +6,7 @@ const ProductRow = ({ product, onEdit }) => {
       <td className="p-4">{product.id}</td>
       <td className="p-4">{product.name}</td>
       <td className="p-4">{product.category}</td>
-      <td className="p-4">₹ {product.price.toFixed(2)}</td>
+      <td className="p-4">₹ git{product.price.toFixed(2)}</td>
       <td className="p-4">{product.stock}</td>
       <td className="p-4">{product.rating}</td>
       <td className="p-4">

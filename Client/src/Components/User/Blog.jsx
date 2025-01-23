@@ -1,142 +1,167 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import blogsData from "../../assets/blogs.json";
-import {
-  Modal,
-  Card,
-  CardContent,
-  Typography,
-  Grid,
-  Box,
-} from "@mui/material";
+import { Modal, Button } from "@mui/material"; // Retained for Modal and Button components
 import Navbar from "./Navbar";
 import Footer from "../Footer";
 
+// NewsAPI Setup
+const NEWS_API_URL = "https://newsapi.org/v2/everything";
+const API_KEY = "fec0817602714ce08bcf62b3230b16b5"; // Replace with your NewsAPI key
+
 const Blog = () => {
   const [selectedBlog, setSelectedBlog] = useState(null);
+  const [news, setNews] = useState([]);
+  const [loadingNews, setLoadingNews] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+  const newsPerPage = 4;
+  const maxNewsToShow = 20;
+
+  // Fetch Green Projects News Related to India
+  useEffect(() => {
+    const fetchNews = async () => {
+      try {
+        const response = await fetch(
+          `${NEWS_API_URL}?q=green+projects&apiKey=${API_KEY}`
+        );
+        const data = await response.json();
+        setNews(data.articles.slice(0, maxNewsToShow)); // Show only the first 20 news articles
+      } catch (error) {
+        console.error("Error fetching news:", error);
+      } finally {
+        setLoadingNews(false);
+      }
+    };
+    fetchNews();
+  }, []);
+
+  // Calculate the news to display on the current page
+  const indexOfLastNews = currentPage * newsPerPage;
+  const indexOfFirstNews = indexOfLastNews - newsPerPage;
+  const currentNews = news.slice(indexOfFirstNews, indexOfLastNews);
+
+  // Handle page change
+  const handlePageChange = (newPage) => {
+    setCurrentPage(newPage);
+  };
 
   return (
     <>
       <Navbar />
-      <Box
-        sx={{
-          minHeight: "100vh",
-          background: "linear-gradient(to bottom, #d4edda, #ffffff)", // Light green gradient
-          py: 4,
-          px: 2,
-        }}
-      >
+      <div className="min-h-screen bg-gradient-to-b from-green-50 to-white py-16 px-8">
+        {/* Main Grid Layout with Left (Blogs) and Right (News) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          {/* Left Section (Blogs) */}
+          <div>
+            <h2 className="text-5xl font-extrabold text-green-600 mb-8 text-center">
+              Blogs
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
+              {blogsData.blogs.map((blog) => (
+                <div
+                  key={blog.id}
+                  className="bg-white rounded-xl shadow-lg hover:scale-105 transition-all duration-300 ease-in-out cursor-pointer"
+                  onClick={() => setSelectedBlog(blog)}
+                >
+                  <div className="p-6">
+                    <h3 className="text-xl font-semibold text-center text-green-600 mb-4">
+                      {blog.title}
+                    </h3>
+                    <p className="text-center text-gray-600">{blog.category}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
 
-        {/* Blog Cards Grid */}
-        <Grid container spacing={4} sx={{ px: 4 }}>
-          {blogsData.blogs.map((blog) => (
-            <Grid item xs={12} sm={6} md={4} key={blog.id}>
-              <Card
-                sx={{
-                  transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                  "&:hover": {
-                    transform: "scale(1.05)",
-                    boxShadow: "0 8px 20px rgba(144, 238, 144, 0.5)", // Light green box shadow
-                  },
-                  cursor: "pointer",
-                  backgroundColor: "#f7f9fc",
-                  borderRadius: "12px",
-                  padding: "16px",
-                }}
-                onClick={() => setSelectedBlog(blog)}
+          {/* Right Section (News) */}
+          <div>
+            <h2 className="text-5xl font-extrabold text-green-600 mb-8 text-center">
+              News
+            </h2>
+            {loadingNews ? (
+              <p className="text-center text-gray-500">Loading...</p>
+            ) : (
+              <div className="space-y-6">
+                {currentNews.length > 0 ? (
+                  currentNews.map((article, index) => (
+                    <div
+                      key={index}
+                      className="bg-white p-6 rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300"
+                    >
+                      <h3 className="text-2xl font-semibold text-green-700 mb-3">
+                        {article.title}
+                      </h3>
+                      <p className="text-gray-700 mb-4">{article.description}</p>
+                      <p className="text-sm text-gray-500">
+                        Source:{" "}
+                        <a
+                          href={article.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-green-600 hover:underline"
+                        >
+                          Read more
+                        </a>
+                      </p>
+                    </div>
+                  ))
+                ) : (
+                  <p className="text-center text-gray-500">No news found.</p>
+                )}
+              </div>
+            )}
+
+            {/* Pagination Controls */}
+            <div className="flex justify-center mt-8 space-x-4">
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={() => handlePageChange(currentPage - 1)}
+                disabled={currentPage === 1}
               >
-                <CardContent>
-                  <Typography
-                    variant="h6"
-                    sx={{
-                      fontWeight: "bold",
-                      mb: 2,
-                      textAlign: "center",
-                      color: "green",
-                    }}
-                  >
-                    {blog.title}
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    sx={{ color: "gray", textAlign: "center" }}
-                  >
-                    {blog.category}
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
+                Previous
+              </Button>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={() => handlePageChange(currentPage + 1)}
+                disabled={currentPage * newsPerPage >= maxNewsToShow}
+              >
+                Next
+              </Button>
+            </div>
+          </div>
+        </div>
 
         {/* Detailed Blog View (Modal) */}
         <Modal
           open={!!selectedBlog}
           onClose={() => setSelectedBlog(null)}
-          sx={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-          }}
+          className="flex items-center justify-center"
         >
-          <Box
-            sx={{
-              backgroundColor: "white",
-              p: 4,
-              borderRadius: "12px",
-              boxShadow: "0 4px 10px rgba(0, 0, 0, 0.2)",
-              maxWidth: "600px",
-              width: "100%",
-            }}
-          >
+          <div className="bg-white p-8 rounded-lg shadow-xl max-w-4xl w-full">
             {selectedBlog && (
               <>
-                <Typography
-                  variant="caption"
-                  sx={{
-                    backgroundColor: "#32cd32",
-                    color: "white",
-                    px: 2,
-                    py: 1,
-                    borderRadius: "8px",
-                    display: "inline-block",
-                    mb: 2,
-                  }}
-                >
+                <span className="bg-green-400 text-white px-6 py-2 rounded-full inline-block mb-4">
                   {selectedBlog.category}
-                </Typography>
-                <Typography
-                  variant="h5"
-                  sx={{
-                    fontWeight: "bold",
-                    mb: 2,
-                    color: "green",
-                  }}
-                >
+                </span>
+                <h3 className="text-3xl font-semibold text-green-700 mb-4">
                   {selectedBlog.title}
-                </Typography>
-                <Typography
-                  variant="subtitle2"
-                  sx={{ color: "gray", mb: 2 }}
-                >
+                </h3>
+                <p className="text-gray-500 mb-4">
                   by {selectedBlog.author} - {selectedBlog.date}
-                </Typography>
-                <Typography
-                  variant="body1"
-                  sx={{ color: "black", lineHeight: "1.6" }}
-                >
+                </p>
+                <p className="text-gray-800 leading-relaxed mb-6">
                   {selectedBlog.content}
-                </Typography>
-                <Typography
-                  variant="caption"
-                  sx={{ color: "gray", mt: 3, display: "block" }}
-                >
+                </p>
+                <p className="text-sm text-gray-500">
                   {selectedBlog.wordCount} words
-                </Typography>
+                </p>
               </>
             )}
-          </Box>
+          </div>
         </Modal>
-      </Box>
+      </div>
       <Footer />
     </>
   );
