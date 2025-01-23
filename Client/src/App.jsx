@@ -12,6 +12,9 @@ import LandingPage from './Pages/LandingPage';
 import Rewards from './Components/User/Rewards';
 import Volunteer from './Components/User/Volunteer';
 
+import AnalyticsPage from './Pages/Admin/AnalyticsPage'
+import ADashboard from './Pages/Admin/ADashboard'
+
 function App() {
   return (
     <Router>
@@ -33,7 +36,10 @@ function App() {
         <Route path="/organisation/projects/:id" element={<IndividualProjectPage />} />
         <Route path="/organisation/volunteers" element={<VolunteersPage />} />
         <Route path="/organisation/leaderboard" element={<Leaderboard />} />
-        
+
+        {/* Admin routes */}
+        <Route path="/admin" element={<ADashboard />}/>
+        <Route path="/admin/analytics" element={<AnalyticsPage />}/>
       </Routes>
       
     </Router>
