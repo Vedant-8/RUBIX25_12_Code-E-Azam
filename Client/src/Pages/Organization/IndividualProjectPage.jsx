@@ -15,7 +15,14 @@ import Footer from "../../Components/Footer";
 import projectData from "../../assets/projects.json"; // Import the JSON directly
 
 // Register Chart.js components
-ChartJS.register(BarElement, ArcElement, Tooltip, Legend, CategoryScale, LinearScale);
+ChartJS.register(
+  BarElement,
+  ArcElement,
+  Tooltip,
+  Legend,
+  CategoryScale,
+  LinearScale
+);
 
 const IndividualProjectPage = () => {
   const { id } = useParams();
@@ -30,6 +37,34 @@ const IndividualProjectPage = () => {
     video: "",
     description: "",
   });
+
+  // Helper function to generate random donors with Indian names
+  // Helper function to generate random donors with Indian names
+  const generateRandomDonors = () => {
+    const randomNames = [
+      "Amit Sharma",
+      "Priya Singh",
+      "Ravi Kumar",
+      "Anjali Patel",
+      "Sandeep Reddy",
+      "Neha Gupta",
+      "Vikas Yadav",
+      "Ritu Sharma",
+      "Manoj Verma",
+      "Shalini Agarwal",
+      "Arun Joshi",
+      "Kavita Desai",
+      "Rajesh Mehta",
+      "Sushma Rao",
+      "Vikram Bhatia",
+    ];
+
+    return Array.from({ length: 3 }, () => ({
+      name: randomNames[Math.floor(Math.random() * randomNames.length)],
+      // Generating a random integer donation between ₹100 and ₹1000
+      donation: Math.floor(Math.random() * (1000 - 100 + 1)) + 100,
+    }));
+  };
 
   useEffect(() => {
     // Load project data from imported JSON
@@ -46,7 +81,8 @@ const IndividualProjectPage = () => {
             }))
           : []
       );
-      setDonors(selectedProject.donors || []);
+      // If donors are not available, generate random donors
+      setDonors(selectedProject.donors || generateRandomDonors());
     } else {
       console.error("Project not found");
     }
@@ -89,7 +125,11 @@ const IndividualProjectPage = () => {
     labels: ["CO2 Reduction", "Trees Planted", "Water Saved"],
     datasets: [
       {
-        data: [project.co2_reduction, project.trees_planted, project.water_saved],
+        data: [
+          project.co2_reduction,
+          project.trees_planted,
+          project.water_saved,
+        ],
         backgroundColor: ["#2196f3", "#4caf50", "#ff9800"],
         borderColor: ["#1976d2", "#388e3c", "#f57c00"],
         borderWidth: 1,
@@ -98,7 +138,8 @@ const IndividualProjectPage = () => {
   };
 
   // Chart Data: Funding Percentage (Doughnut Chart)
-  const fundingPercentage = (project.funding_received / project.funding_goal) * 100;
+  const fundingPercentage =
+    (project.funding_received / project.funding_goal) * 100;
   const fundingProgressData = {
     labels: ["Funding Used", "Funding Remaining"],
     datasets: [
@@ -128,11 +169,14 @@ const IndividualProjectPage = () => {
           <div className="space-y-8">
             {/* Project Details */}
             <section className="bg-white p-8 rounded-lg shadow-md">
-              <h1 className="text-3xl font-bold text-gray-800">{project.name}</h1>
+              <h1 className="text-3xl font-bold text-gray-800">
+                {project.name}
+              </h1>
               <p className="mt-4 text-gray-600">{project.description}</p>
               <div className="mt-6 text-gray-700">
                 <p>
-                  <span className="font-semibold">Location:</span> {project.location}
+                  <span className="font-semibold">Location:</span>{" "}
+                  {project.location}
                 </p>
                 <p>
                   <span className="font-semibold">Funding:</span> ₹{" "}
@@ -143,7 +187,9 @@ const IndividualProjectPage = () => {
 
             {/* Expanded Stats Section */}
             <section className="bg-white p-8 rounded-lg shadow-md">
-              <h2 className="text-2xl font-semibold text-gray-800">Project Stats</h2>
+              <h2 className="text-2xl font-semibold text-gray-800">
+                Project Stats
+              </h2>
               <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-8">
                 {/* Funding Progress */}
                 <div>
@@ -188,7 +234,9 @@ const IndividualProjectPage = () => {
             {/* Updates Section */}
             <section className="bg-white p-8 rounded-lg shadow-md">
               <div className="flex justify-between items-center mb-6">
-                <h2 className="text-2xl font-semibold text-gray-800">Updates</h2>
+                <h2 className="text-2xl font-semibold text-gray-800">
+                  Updates
+                </h2>
                 <button
                   onClick={() => setShowModal(true)}
                   className="bg-blue-500 text-white px-4 py-2 rounded-md shadow-md hover:bg-blue-600 transition duration-300"
@@ -236,7 +284,9 @@ const IndividualProjectPage = () => {
 
             {/* Volunteers Section */}
             <section className="bg-white p-8 rounded-lg shadow-md">
-              <h2 className="text-2xl font-semibold text-gray-800">Volunteers</h2>
+              <h2 className="text-2xl font-semibold text-gray-800">
+                Volunteers
+              </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
                 {volunteers.map((volunteer) => (
                   <div

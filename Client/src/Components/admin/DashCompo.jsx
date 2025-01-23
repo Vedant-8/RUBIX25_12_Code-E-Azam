@@ -31,7 +31,7 @@ const DashCompo = () => {
   return (
     <div className="p-8 space-y-6">
       {/* General Stats */}
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         <div className="p-6 bg-blue-500 text-white rounded-lg shadow">
           <h2 className="text-xl font-bold">Orgs</h2>
           <p className="text-3xl">10</p>
@@ -42,34 +42,34 @@ const DashCompo = () => {
         </div>
         <div className="p-6 bg-yellow-500 text-white rounded-lg shadow">
           <h2 className="text-xl font-bold">Shop Revenue</h2>
-          <p className="text-3xl">$5000</p>
+          <p className="text-3xl">₹ 5,00,000</p>
         </div>
       </div>
 
       {/* Review New Orgs Button */}
       <button
         onClick={() => setShowModal(true)}
-        className="px-4 py-2 bg-indigo-500 text-white rounded-lg hover:bg-indigo-600 mb-4"
+        className="px-6 py-3 bg-indigo-500 text-white rounded-lg hover:bg-indigo-600 mb-4"
       >
         Review New Orgs
       </button>
 
       {/* Organizations Table */}
-      <div className="bg-white shadow rounded-lg max-h-50 overflow-y-auto">
+      <div className="bg-white shadow rounded-lg overflow-x-auto">
         <table className="min-w-full table-auto">
           <thead className="bg-gray-100">
             <tr>
-              <th className="px-4 py-2">S/N</th> {/* Added Serial Number column */}
-              <th className="px-4 py-2">Organization Name</th>
-              <th className="px-4 py-2">Email</th>
-              <th className="px-4 py-2">Contact</th>
-              <th className="px-4 py-2">Status</th>
+              <th className="px-4 py-2 text-left">S/N</th>
+              <th className="px-4 py-2 text-left">Organization Name</th>
+              <th className="px-4 py-2 text-left">Email</th>
+              <th className="px-4 py-2 text-left">Contact</th>
+              <th className="px-4 py-2 text-left">Status</th>
             </tr>
           </thead>
-          <tbody className="max-h-20 overflow-y-auto">
+          <tbody>
             {organizations.map((org, idx) => (
               <tr key={idx} className="border-t">
-                <td className="px-4 py-2">{idx + 1}</td> {/* Serial Number */}
+                <td className="px-4 py-2">{idx + 1}</td>
                 <td className="px-4 py-2">
                   <Link
                     to={`/admin/${org.id}`}
@@ -79,13 +79,13 @@ const DashCompo = () => {
                   </Link>
                 </td>
                 <td className="px-4 py-2">
-                  {org.email || "dummy@example.com"} {/* Handle empty email */}
+                  {org.email || "dummy@example.com"}
                 </td>
                 <td className="px-4 py-2">
-                  {org.contact || "N/A"} {/* Handle empty contact */}
+                  {org.contact || "N/A"}
                 </td>
                 <td className="px-4 py-2">
-                  {org.status || "Pending"} {/* Handle empty status */}
+                  {org.status || "Pending"}
                 </td>
               </tr>
             ))}
@@ -96,7 +96,7 @@ const DashCompo = () => {
       {/* Modal */}
       {showModal && (
         <div className="fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center">
-          <div className="bg-white rounded-lg p-6 w-1/2 space-y-4">
+          <div className="bg-white rounded-lg p-6 w-full sm:w-2/3 lg:w-1/2 space-y-4">
             <h3 className="text-lg font-bold">Review New Organizations</h3>
             <div className="space-y-4">
               {reviewOrganizations.map((org, idx) => (
@@ -117,7 +117,7 @@ const DashCompo = () => {
             </div>
             <button
               onClick={() => setShowModal(false)}
-              className="px-4 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 mt-4"
+              className="px-6 py-3 bg-gray-500 text-white rounded-lg hover:bg-gray-600 mt-4"
             >
               Close
             </button>

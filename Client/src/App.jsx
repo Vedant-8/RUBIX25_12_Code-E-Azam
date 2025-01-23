@@ -17,6 +17,7 @@ import Suggestion from './Utils/User/Suggestion';
 
 import AnalyticsPage from './Pages/Admin/AnalyticsPage'
 import ADashboard from './Pages/Admin/ADashboard'
+import AdminShopPage from './Pages/Admin/AdminShopPage'
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
         {/* Admin routes */}
         <Route path="/admin" element={<ADashboard />}/>
         <Route path="/admin/analytics" element={<AnalyticsPage />}/>
+        <Route path="/admin/shop" element={<AdminShopPage />}/>
       </Routes>
       
     </Router>

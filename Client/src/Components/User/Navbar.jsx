@@ -1,65 +1,150 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { AppBar, Toolbar, Box } from "@mui/material";
+import { AppBar, Toolbar, Box, Button } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
 const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
 
-  // Styled Navigation Button
-  const NavButton = styled("button")(({ theme }) => ({
-    backgroundColor: "#ffffff", // White background
-    color: "#007f3f", // Green text
-    cursor: "pointer",
-    fontSize: "1rem",
-    fontWeight: "500",
-    padding: "0.5rem 1.5rem",
-    borderRadius: "0.5rem",
-    transition: "all 0.3s ease-in-out",
-    textTransform: "capitalize",
-    "&:hover": {
-      backgroundColor: "#e6f9e6", // Light green on hover
-      color: "#005f2f", // Darker green text on hover
-      transform: "scale(1.1)", // Slight scaling effect
-      boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)", // Subtle shadow
-    },
-  }));
+  // Handle Logout
+  const handleLogout = () => {
+    localStorage.removeItem("authToken"); // Clear authentication token or data
+    navigate("/"); // Redirect to home page
+  };
 
   return (
-    <AppBar
-      position="static"
-      style={{
-        backgroundColor: "#ffffff", // White background
-        boxShadow: "0px 2px 4px rgba(0, 0, 0, 0.1)", // Light shadow
-      }}
-    >
-      <Toolbar className="flex justify-between items-center">
-        {/* Website Name */}
-        <Box
-          className="cursor-pointer"
-          onClick={() => navigate("/user")}
-          style={{
-            fontFamily: "'Roboto', sans-serif",
-            fontSize: "1.5rem",
-            fontWeight: "bold",
-            color: "#007f3f", // Green color for the website name
-          }}
-        >
-          Samuhik Sankalpa
-        </Box>
+    <nav className="bg-white border-b border-gray-200 shadow-lg">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16">
+          {/* Website Name */}
+          <Box
+            className="cursor-pointer text-2xl font-bold text-green-600"
+            onClick={() => navigate("/user")}
+          >
+            Samuhik Sankalpa
+          </Box>
 
-        {/* Navigation Buttons */}
-        <Box className="flex gap-4">
-          <NavButton onClick={() => navigate("/user/shop")}>Shop</NavButton>
-          <NavButton onClick={() => navigate("/user/volunteer")}>Volunteer</NavButton>
-          <NavButton onClick={() => navigate("/user/rewards")}>Rewards</NavButton>
-          <NavButton onClick={() => navigate("/user/suggestion")}>AI suggestion for Donation</NavButton>
-          <NavButton onClick={() => navigate("/user/educational")}>
-            Educational
-          </NavButton>
-        </Box>
-      </Toolbar>
-    </AppBar>
+          {/* Desktop Navigation Buttons */}
+          <div className="hidden md:flex items-center space-x-8">
+            <button
+              onClick={() => navigate("/user/shop")}
+              className="text-gray-700 hover:text-green-600 font-medium"
+            >
+              Shop
+            </button>
+            <button
+              onClick={() => navigate("/user/volunteer")}
+              className="text-gray-700 hover:text-green-600 font-medium"
+            >
+              Volunteer
+            </button>
+            <button
+              onClick={() => navigate("/user/rewards")}
+              className="text-gray-700 hover:text-green-600 font-medium"
+            >
+              Rewards
+            </button>
+            <button
+              onClick={() => navigate("/user/suggestion")}
+              className="text-gray-700 hover:text-green-600 font-medium"
+            >
+              AI suggestion for Donation
+            </button>
+            <button
+              onClick={() => navigate("/user/educational")}
+              className="text-gray-700 hover:text-green-600 font-medium"
+            >
+              Educational
+            </button>
+            {/* Logout Button */}
+            <button
+              onClick={handleLogout}
+              className="text-red-500 hover:text-red-700 font-medium"
+            >
+              Logout
+            </button>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <div className="md:hidden flex items-center">
+            <button
+              className="text-gray-500 hover:text-green-600 focus:outline-none"
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              <svg
+                className="h-6 w-6"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                {isOpen ? (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                ) : (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16m-7 6h7"
+                  />
+                )}
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      {isOpen && (
+        <div className="md:hidden bg-white border-t border-gray-200">
+          <div className="space-y-1 px-2 pb-3">
+            <button
+              onClick={() => navigate("/user/shop")}
+              className="block text-gray-700 hover:text-green-600 font-medium"
+            >
+              Shop
+            </button>
+            <button
+              onClick={() => navigate("/user/volunteer")}
+              className="block text-gray-700 hover:text-green-600 font-medium"
+            >
+              Volunteer
+            </button>
+            <button
+              onClick={() => navigate("/user/rewards")}
+              className="block text-gray-700 hover:text-green-600 font-medium"
+            >
+              Rewards
+            </button>
+            <button
+              onClick={() => navigate("/user/suggestion")}
+              className="block text-gray-700 hover:text-green-600 font-medium"
+            >
+              AI suggestion for Donation
+            </button>
+            <button
+              onClick={() => navigate("/user/educational")}
+              className="block text-gray-700 hover:text-green-600 font-medium"
+            >
+              Educational
+            </button>
+            {/* Mobile Logout Button */}
+            <button
+              onClick={handleLogout}
+              className="block text-red-500 hover:text-red-700 font-medium"
+            >
+              Logout
+            </button>
+          </div>
+        </div>
+      )}
+    </nav>
   );
 };
 

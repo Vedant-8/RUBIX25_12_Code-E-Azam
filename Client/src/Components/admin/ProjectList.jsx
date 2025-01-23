@@ -15,7 +15,7 @@ const ProjectList = ({ organizations }) => {
           {organizations.map((org) => 
             org.projects.map((project) => (
               <tr key={project.id}>
-                <td className="border border-gray-300 p-2">
+                <td className="border border-gray-300 p-2 text-blue-500 hover:underline">
                   <Link to={`/organization/${org.id}/${project.id}`}>
                     {project.project_name}
                   </Link>

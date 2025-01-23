@@ -1,7 +1,16 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    // Clear any authentication data (e.g., token or user info from localStorage)
+    localStorage.removeItem("authToken"); // or any other key used for authentication
+    // Redirect to home page
+    navigate('/');
+  };
 
   return (
     <nav className="bg-white border-b border-gray-200 shadow-lg">
@@ -40,6 +49,13 @@ const Navbar = () => {
             >
               Contact Us
             </a>
+            {/* Logout Button */}
+            <button
+              onClick={handleLogout}
+              className="text-red-500 hover:text-red-700 font-medium"
+            >
+              Logout
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -104,6 +120,13 @@ const Navbar = () => {
             >
               Contact
             </a>
+            {/* Mobile Logout */}
+            <button
+              onClick={handleLogout}
+              className="block text-red-500 hover:text-red-700 font-medium"
+            >
+              Logout
+            </button>
           </div>
         </div>
       )}

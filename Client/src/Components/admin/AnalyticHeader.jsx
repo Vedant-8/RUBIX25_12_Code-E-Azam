@@ -45,11 +45,12 @@ const AnalyticHeader = ({ organizations }) => {
       {/* Total Volunteers */}
       <div className="bg-purple-100 p-6 rounded-lg shadow-lg flex items-center justify-between">
         <div className="flex items-center space-x-4">
-          <span className="text-3xl font-semibold text-purple-600">🙋‍♀️</span>
+          <span className="text-3xl font-semibold text-purple-600">💵</span>
           <div>
-            <h3 className="text-lg font-medium">Total Volunteers</h3>
+            <h3 className="text-lg font-medium">Total Revenue in current FY (in ₹)</h3>
             <p className="text-2xl font-bold text-gray-800">
-              {organizations.reduce((total, org) => total + org.volunteers_count, 0)}
+              {/* {organizations.reduce((total, org) => total + org.volunteers_count, 0)} */}
+              5,00,000
             </p>
           </div>
         </div>

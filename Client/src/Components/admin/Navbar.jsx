@@ -22,12 +22,15 @@ const Navbar = () => {
             >
               Analytics
             </a>
-            {/* <a
-              href="/organisation/volunteers"
+
+            <a
+              href="/admin/shop"
               className="text-gray-700 hover:text-green-600 font-medium"
             >
-              Volunteers
+              Manage Shop
             </a>
+
+            {/* 
             <a
               href="/organisation/leaderboard"
               className="text-gray-700 hover:text-green-600 font-medium"
