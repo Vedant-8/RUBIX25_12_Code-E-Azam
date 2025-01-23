@@ -52,6 +52,12 @@ const Navbar = () => {
               AI suggestion for Donation
             </button>
             <button
+              onClick={() => navigate("/user/games")}
+              className="text-gray-700 hover:text-green-600 font-medium"
+            >
+              Games
+            </button>
+            <button
               onClick={() => navigate("/user/educational")}
               className="text-gray-700 hover:text-green-600 font-medium"
             >

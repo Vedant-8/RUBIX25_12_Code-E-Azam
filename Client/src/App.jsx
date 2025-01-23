@@ -21,6 +21,7 @@ import CostEstimation from './Utils/Organisation/CostEstimation';
 import AdminShopPage from './Pages/Admin/AdminShopPage'
 import Login from './Pages/Login'
 import Signup from './Pages/Signup';
+import Game from './Utils/User/Games/Game';
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
         <Route path="/user/shop" element={<Shop />} />
         <Route path="/user/educational" element={<Blog />} />
         <Route path="/user/suggestion" element={<Suggestion />} />
+        <Route path="/user/games" element={<Game />} />
 
         {/* Organization routes */}
         <Route path="/organisation" element={<Dashboard />} />

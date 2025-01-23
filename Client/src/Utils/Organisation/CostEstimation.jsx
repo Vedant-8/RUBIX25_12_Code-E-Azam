@@ -41,7 +41,7 @@ const CostEstimation = () => {
       setLoading(true);
 
       // Initialize the Gemini API client
-      const genAI = new GoogleGenerativeAI("AIzaSyAWNRDNziayC7r-ho_NeK2H_sFvhGr_N9g");
+      const genAI = new GoogleGenerativeAI("");
       const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
       // Generate the prompt dynamically based on user input
