@@ -27,6 +27,8 @@ import Login from "./Pages/Login";
 import Signup from "./Pages/Signup";
 import Game from "./Utils/User/Games/Game";
 
+import ContentGenerator from "./Pages/Organization/ContentGenerator";
+
 // Create a context for authentication
 export const AuthContext = createContext();
 
@@ -42,177 +44,34 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
 
-          {/* Role-Based Protected Routes */}
           {/* User Routes */}
-          <Route
-            path="/user"
-            element={
-              <PrivateRoute role="User">
-                <UDashboard />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/user/project/:id"
-            element={
-              <PrivateRoute role="User">
-                <ProjectDetail />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/user/volunteer"
-            element={
-              <PrivateRoute role="User">
-                <Volunteer />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/user/rewards"
-            element={
-              <PrivateRoute role="User">
-                <Rewards />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/user/shop"
-            element={
-              <PrivateRoute role="User">
-                <Shop />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/user/educational"
-            element={
-              <PrivateRoute role="User">
-                <Blog />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/user/suggestion"
-            element={
-              <PrivateRoute role="User">
-                <Suggestion />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/user/games"
-            element={
-              <PrivateRoute role="User">
-                <Game />
-              </PrivateRoute>
-            }
-          />
+          <Route path="/user" element={<UDashboard />} />
+          <Route path="/user/project/:id" element={<ProjectDetail />} />
+          <Route path="/user/volunteer" element={<Volunteer />} />
+          <Route path="/user/rewards" element={<Rewards />} />
+          <Route path="/user/shop" element={<Shop />} />
+          <Route path="/user/educational" element={<Blog />} />
+          <Route path="/user/suggestion" element={<Suggestion />} />
+          <Route path="/user/games" element={<Game />} />
 
           {/* Organization Routes */}
-          <Route
-            path="/organisation"
-            element={
-              <PrivateRoute role="Organisation">
-                <Dashboard />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/organisation/contact"
-            element={
-              <PrivateRoute role="Organisation">
-                <ContactUs />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/organisation/projects"
-            element={
-              <PrivateRoute role="Organisation">
-                <ProjectsPage />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/organisation/projects/:id"
-            element={
-              <PrivateRoute role="Organisation">
-                <IndividualProjectPage />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/organisation/volunteers"
-            element={
-              <PrivateRoute role="Organisation">
-                <VolunteersPage />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/organisation/leaderboard"
-            element={
-              <PrivateRoute role="Organisation">
-                <Leaderboard />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/organisation/costEstimation"
-            element={
-              <PrivateRoute role="Organisation">
-                <CostEstimation />
-              </PrivateRoute>
-            }
-          />
+          <Route path="/organisation" element={<Dashboard />} />
+          <Route path="/organisation/contact" element={<ContactUs />} />
+          <Route path="/organisation/projects" element={<ProjectsPage />} />
+          <Route path="/organisation/projects/:id" element={<IndividualProjectPage />} />
+          <Route path="/organisation/volunteers" element={<VolunteersPage />} />
+          <Route path="/organisation/leaderboard" element={<Leaderboard />} />
+          <Route path="/organisation/costEstimation" element={<CostEstimation />} />
+          <Route path="/organisation/contentgenerator" element={<ContentGenerator />} />
 
           {/* Admin Routes */}
-          <Route
-            path="/admin"
-            element={
-              <PrivateRoute role="Admin">
-                <ADashboard />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/admin/analytics"
-            element={
-              <PrivateRoute role="Admin">
-                <AnalyticsPage />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/admin/shop"
-            element={
-              <PrivateRoute role="Admin">
-                <AdminShopPage />
-              </PrivateRoute>
-            }
-          />
+          <Route path="/admin" element={<ADashboard />} />
+          <Route path="/admin/analytics" element={<AnalyticsPage />} />
+          <Route path="/admin/shop" element={<AdminShopPage />} />
         </Routes>
       </Router>
     </AuthContext.Provider>
   );
 }
-
-// PrivateRoute Component
-const PrivateRoute = ({ children, role }) => {
-  const { userRole } = useContext(AuthContext);
-
-  if (!userRole) {
-    // If not logged in, redirect to login
-    return <Navigate to="/login" />;
-  }
-
-  if (userRole !== role) {
-    // If user doesn't have the required role, redirect to a forbidden page or landing
-    return <Navigate to="/" />;
-  }
-
-  return children;
-};
 
 export default App;

@@ -2,13 +2,23 @@ import React from "react";
 
 const RecentDonars = () => {
   const Donations = [
-    { user: "John Doe", amount: "500", project: "Solar Panels", date: "2025-01-20" },
-    { user: "Jane Smith", amount: "300", project: "Community Garden", date: "2025-01-18" },
-    { user: "Alice Johnson", amount: "700", project: "Recycling Program", date: "2025-01-15" },
-    { user: "Alice Johnson", amount: "700", project: "Recycling Program", date: "2025-01-15" },
-    { user: "Alice Johnson", amount: "700", project: "Recycling Program", date: "2025-01-15" },
-    { user: "Alice Johnson", amount: "700", project: "Recycling Program", date: "2025-01-15" },
-  ];
+    { user: "Faiz Shinde", amount: "500", project: "Solar Panels", date: "2025-01-20" },
+    { user: "Priya Sharma", amount: "300", project: "Community Garden", date: "2025-01-20" },
+    { user: "Ananya Gupta", amount: "700", project: "Recycling Program", date: "2025-01-19" },
+    { user: "Amit Verma", amount: "250", project: "Water Conservation", date: "2025-01-18" },
+    { user: "Neha Patel", amount: "450", project: "Urban Farming", date: "2025-01-18" },
+    { user: "Sanjay Reddy", amount: "600", project: "Solar Panels", date: "2025-01-18" },
+    { user: "Maya Desai", amount: "550", project: "Community Garden", date: "2025-01-17" },
+    { user: "Vikram Yadav", amount: "800", project: "Recycling Program", date: "2025-01-14" },
+    { user: "Sanya Mehta", amount: "700", project: "Green Energy", date: "2025-01-16" },
+    { user: "Rajesh Kumar", amount: "300", project: "Reforestation", date: "2025-01-12" },
+    { user: "Shruti Iyer", amount: "450", project: "Waste Reduction", date: "2025-01-10" },
+    { user: "Karan Singh", amount: "600", project: "Community Garden", date: "2025-01-11" },
+    { user: "Simran Kaur", amount: "550", project: "Solar Panels", date: "2025-01-13" },
+    { user: "Arjun Verma", amount: "400", project: "Water Conservation", date: "2025-01-09" },
+    { user: "Aishwarya Rao", amount: "650", project: "Urban Farming", date: "2025-01-23" }
+];
+
 
   return (
     <div className="bg-white shadow rounded-lg p-4 max-h-80 overflow-y-auto">

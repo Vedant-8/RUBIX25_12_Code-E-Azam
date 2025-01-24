@@ -16,9 +16,9 @@ const Dashboard = () => {
         {/* Stats Section */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           <StatsCard title="Total Funds Raised (in '₹')" value="50,000" />
-          <StatsCard title="Active Projects" value="3" />
-          <StatsCard title="Volunteer Count" value="8" />
-          <StatsCard title="Total Donars" value="25" />
+          <StatsCard title="Active Projects" value="7" />
+          <StatsCard title="Volunteer Count" value="18" />
+          <StatsCard title="Total Donars" value="129" />
         </div>
 
         {/* Projects and Investments */}

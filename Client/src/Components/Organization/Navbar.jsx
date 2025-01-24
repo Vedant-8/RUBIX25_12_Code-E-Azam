@@ -3,13 +3,14 @@ import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
   const navigate = useNavigate();
 
   const handleLogout = () => {
     // Clear any authentication data (e.g., token or user info from localStorage)
     localStorage.removeItem("authToken"); // or any other key used for authentication
     // Redirect to home page
-    navigate('/');
+    navigate("/");
   };
 
   return (
@@ -34,12 +35,55 @@ const Navbar = () => {
             >
               Projects
             </a>
-            <a
-              href="/organisation/costEstimation"
-              className="text-gray-700 hover:text-green-600 font-medium"
-            >
-              Cost Estimation
-            </a>
+
+            {/* Tools Dropdown */}
+            <div className="relative">
+              <button
+                className="flex items-center text-gray-700 hover:text-green-600 font-medium"
+                onClick={() => setDropdownOpen(!dropdownOpen)} // Toggle dropdown on click
+              >
+                Tools
+                <svg
+                  className={`ml-2 h-5 w-5 transform transition-transform duration-200 ${
+                    dropdownOpen ? "rotate-180" : "rotate-0"
+                  }`}
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+              {dropdownOpen && (
+                <div className="absolute mt-2 w-48 bg-white border border-gray-200 shadow-lg rounded-md">
+                  <a
+                    href="/organisation/costEstimation"
+                    className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                  >
+                    Cost Estimation
+                  </a>
+                  <a
+                    href="/organisation/contentgenerator"
+                    className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                  >
+                    AI Content Generator
+                  </a>
+                  <a
+                    href="http://localhost:5174/"
+                    className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                  >
+                    MultiPost
+                  </a>
+                </div>
+              )}
+            </div>
+
             <a
               href="/organisation/volunteers"
               className="text-gray-700 hover:text-green-600 font-medium"
@@ -111,17 +155,63 @@ const Navbar = () => {
             >
               Projects
             </a>
+            <div className="relative">
+              <button
+                className="block text-gray-700 hover:text-green-600 font-medium"
+                onClick={() => setDropdownOpen(!dropdownOpen)} // Toggle dropdown on click
+              >
+                Tools
+                <svg
+                  className={`ml-2 h-5 w-5 transform transition-transform duration-200 ${
+                    dropdownOpen ? "rotate-180" : "rotate-0"
+                  }`}
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+              {dropdownOpen && (
+                <div className="absolute mt-2 w-48 bg-white border border-gray-200 shadow-lg rounded-md z-100">
+                  <a
+                    href="/organisation/costEstimation"
+                    className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                  >
+                    Cost Estimation
+                  </a>
+                  <a
+                    href="/organisation/contentgenerator"
+                    className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                  >
+                    AI Content Generator
+                  </a>
+                  <a
+                    href="/organisation/socialmedia"
+                    className="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+                  >
+                    MultiPost
+                  </a>
+                </div>
+              )}
+            </div>
             <a
-              href="/organisation/organizations"
+              href="/organisation/volunteers"
               className="block text-gray-700 hover:text-green-600 font-medium"
             >
-              Organizations
+              Volunteers
             </a>
             <a
-              href="/organisation/about"
+              href="/organisation/leaderboard"
               className="block text-gray-700 hover:text-green-600 font-medium"
             >
-              About Us
+              Leaderboard
             </a>
             <a
               href="/organisation/contact"

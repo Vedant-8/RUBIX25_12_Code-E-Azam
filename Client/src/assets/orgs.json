@@ -7,6 +7,8 @@
       "trees_planted": 1500,
       "water_saved": 8000,
       "volunteers_count": 400,
+      "email": "contact@mumbai-green.org",
+      "contact": "+91 9212345678",
       "projects": [
         {
           "id": 1,
@@ -39,6 +41,8 @@
       "trees_planted": 1300,
       "water_saved": 6000,
       "volunteers_count": 300,
+      "email": "info@mumbai-coastalcare.org",
+      "contact": "+91 9298765432",
       "projects": [
         {
           "id": 1,
@@ -71,6 +75,8 @@
       "trees_planted": 1100,
       "water_saved": 5000,
       "volunteers_count": 280,
+      "email": "thanegreen@foundation.org",
+      "contact": "+91 8211223344",
       "projects": [
         {
           "id": 1,
@@ -103,6 +109,8 @@
       "trees_planted": 1000,
       "water_saved": 4500,
       "volunteers_count": 220,
+      "email": "nmeco-warriors@navimumbai.org",
+      "contact": "+91 9255667788",
       "projects": [
         {
           "id": 1,
@@ -135,6 +143,8 @@
       "trees_planted": 1400,
       "water_saved": 7000,
       "volunteers_count": 350,
+      "email": "contact@kalyangreenmission.org",
+      "contact": "+91 8533445566",
       "projects": [
         {
           "id": 1,
@@ -167,6 +177,8 @@
       "trees_planted": 1000,
       "water_saved": 5200,
       "volunteers_count": 300,
+      "email": "vasai.eco@activists.org",
+      "contact": "+91 9544556677",
       "projects": [
         {
           "id": 1,
@@ -199,6 +211,8 @@
       "trees_planted": 800,
       "water_saved": 4000,
       "volunteers_count": 260,
+      "email": "wildlife@mumbairescue.org",
+      "contact": "+91 9266778899",
       "projects": [
         {
           "id": 1,
@@ -231,6 +245,8 @@
       "trees_planted": 1300,
       "water_saved": 6500,
       "volunteers_count": 340,
+      "email": "contact@punegreenmovement.org",
+      "contact": "+91 9088991122",
       "projects": [
         {
           "id": 1,
@@ -263,6 +279,8 @@
       "trees_planted": 1200,
       "water_saved": 6000,
       "volunteers_count": 310,
+      "email": "nashikgreen@guardians.org",
+      "contact": "+91 9566778899",
       "projects": [
         {
           "id": 1,
@@ -295,6 +313,8 @@
       "trees_planted": 1100,
       "water_saved": 5500,
       "volunteers_count": 310,
+      "email": "contact@nagpurgreen.org",
+      "contact": "+91 7133445566",
       "projects": [
         {
           "id": 1,
@@ -326,156 +346,30 @@
       "co2_reduction": 2000,
       "trees_planted": 900,
       "water_saved": 4000,
-      "volunteers_count": 250,
+      "volunteers_count": 230,
+      "email": "contact@aurangabadgreen.org",
+      "contact": "+91 9444556677",
       "projects": [
         {
           "id": 1,
-          "project_name": "Energy Conservation",
+          "project_name": "Organic Farming Projects",
           "co2_reduction": 800,
-          "trees_planted": 400,
+          "trees_planted": 300,
           "water_saved": 1500,
           "volunteers": [
-            { "name": "Rahul", "role": "Coordinator" },
-            { "name": "Gauri", "role": "Volunteer" }
+            { "name": "Deepak", "role": "Coordinator" },
+            { "name": "Tanvi", "role": "Volunteer" }
           ]
         },
         {
           "id": 2,
-          "project_name": "Soil Erosion Prevention",
+          "project_name": "Waste-to-Energy",
           "co2_reduction": 1200,
-          "trees_planted": 500,
+          "trees_planted": 600,
           "water_saved": 2500,
           "volunteers": [
-            { "name": "Amit", "role": "Coordinator" },
-            { "name": "Priya", "role": "Volunteer" }
-          ]
-        }
-      ]
-    },
-    {
-      "id": 12,
-      "name": "Kolhapur Green Association",
-      "co2_reduction": 2300,
-      "trees_planted": 1000,
-      "water_saved": 5000,
-      "volunteers_count": 270,
-      "projects": [
-        {
-          "id": 1,
-          "project_name": "Forest Restoration",
-          "co2_reduction": 1000,
-          "trees_planted": 500,
-          "water_saved": 2000,
-          "volunteers": [
-            { "name": "Vijay", "role": "Coordinator" },
-            { "name": "Komal", "role": "Volunteer" }
-          ]
-        },
-        {
-          "id": 2,
-          "project_name": "Waste Reduction Campaign",
-          "co2_reduction": 1300,
-          "trees_planted": 500,
-          "water_saved": 3000,
-          "volunteers": [
-            { "name": "Anil", "role": "Coordinator" },
-            { "name": "Aarti", "role": "Volunteer" }
-          ]
-        }
-      ]
-    },
-    {
-      "id": 13,
-      "name": "Solapur Green Action",
-      "co2_reduction": 2100,
-      "trees_planted": 950,
-      "water_saved": 4600,
-      "volunteers_count": 290,
-      "projects": [
-        {
-          "id": 1,
-          "project_name": "Solar Power Adoption",
-          "co2_reduction": 900,
-          "trees_planted": 400,
-          "water_saved": 1500,
-          "volunteers": [
             { "name": "Ravi", "role": "Coordinator" },
-            { "name": "Sunita", "role": "Volunteer" }
-          ]
-        },
-        {
-          "id": 2,
-          "project_name": "E-waste Management",
-          "co2_reduction": 1200,
-          "trees_planted": 550,
-          "water_saved": 3100,
-          "volunteers": [
-            { "name": "Nikhil", "role": "Coordinator" },
-            { "name": "Neha", "role": "Volunteer" }
-          ]
-        }
-      ]
-    },
-    {
-      "id": 14,
-      "name": "Chandrapur Green Ventures",
-      "co2_reduction": 1800,
-      "trees_planted": 850,
-      "water_saved": 3800,
-      "volunteers_count": 240,
-      "projects": [
-        {
-          "id": 1,
-          "project_name": "Eco-Friendly Farming",
-          "co2_reduction": 800,
-          "trees_planted": 400,
-          "water_saved": 1500,
-          "volunteers": [
-            { "name": "Shubham", "role": "Coordinator" },
-            { "name": "Madhuri", "role": "Volunteer" }
-          ]
-        },
-        {
-          "id": 2,
-          "project_name": "Green Building Initiatives",
-          "co2_reduction": 1000,
-          "trees_planted": 450,
-          "water_saved": 2300,
-          "volunteers": [
-            { "name": "Sandeep", "role": "Coordinator" },
-            { "name": "Pragati", "role": "Volunteer" }
-          ]
-        }
-      ]
-    },
-    {
-      "id": 15,
-      "name": "Jalna Environmental Guardians",
-      "co2_reduction": 2200,
-      "trees_planted": 950,
-      "water_saved": 5000,
-      "volunteers_count": 260,
-      "projects": [
-        {
-          "id": 1,
-          "project_name": "Rainwater Harvesting Projects",
-          "co2_reduction": 1000,
-          "trees_planted": 450,
-          "water_saved": 2000,
-          "volunteers": [
-            { "name": "Pavan", "role": "Coordinator" },
-            { "name": "Anuja", "role": "Volunteer" }
-          ]
-        },
-        {
-          "id": 2,
-          "project_name": "Urban Tree Planting",
-          "co2_reduction": 1200,
-          "trees_planted": 500,
-          "water_saved": 3000,
-          "volunteers": [
-            { "name": "Raj", "role": "Coordinator" },
-            { "name": "Priyanka", "role": "Volunteer" }
+            { "name": "Shubhi", "role": "Volunteer" }
           ]
         }
       ]

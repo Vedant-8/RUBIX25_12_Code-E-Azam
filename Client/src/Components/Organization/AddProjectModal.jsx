@@ -61,7 +61,7 @@ const AddProjectModal = ({ isOpen, onClose, onAddProject }) => {
         <form onSubmit={handleSubmit}>
           {/* Title */}
           <div className="mb-4">
-            <label className="block font-medium">Title</label>
+            <label className="block font-medium text-left">Title</label>
             <input
               type="text"
               name="title"
@@ -74,7 +74,7 @@ const AddProjectModal = ({ isOpen, onClose, onAddProject }) => {
 
           {/* Description */}
           <div className="mb-4">
-            <label className="block font-medium">Description</label>
+            <label className="block font-medium text-left">Description</label>
             <textarea
               name="description"
               value={formData.description}
@@ -86,7 +86,7 @@ const AddProjectModal = ({ isOpen, onClose, onAddProject }) => {
 
           {/* Funding Goal */}
           <div className="mb-4">
-            <label className="block font-medium">Funding Goal (₹)</label>
+            <label className="block font-medium text-left">Funding Goal (₹)</label>
             <input
               type="number"
               name="funding_goal"
@@ -99,7 +99,7 @@ const AddProjectModal = ({ isOpen, onClose, onAddProject }) => {
 
           {/* Images */}
           <div className="mb-4">
-            <label className="block font-medium">Images (URLs)</label>
+            <label className="block font-medium text-left">Images (URLs)</label>
             <input
               type="text"
               name="images"
@@ -114,7 +114,7 @@ const AddProjectModal = ({ isOpen, onClose, onAddProject }) => {
 
           {/* Videos */}
           <div className="mb-4">
-            <label className="block font-medium">Videos (URLs)</label>
+            <label className="block font-medium text-left">Videos (URLs)</label>
             <input
               type="text"
               name="videos"
@@ -126,6 +126,8 @@ const AddProjectModal = ({ isOpen, onClose, onAddProject }) => {
               className="border w-full p-2 rounded"
             />
           </div>
+
+          {/* Submit Button */}
           <div className="flex justify-end">
             <button
               type="submit"

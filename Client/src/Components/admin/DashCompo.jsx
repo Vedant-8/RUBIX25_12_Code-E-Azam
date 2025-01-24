@@ -4,17 +4,21 @@ import organizationsData from "../../assets/orgs.json";
 
 const DashCompo = () => {
   const [showModal, setShowModal] = useState(false);
-  const [organizations, setOrganizations] = useState(organizationsData.organizations);
+  const [organizations, setOrganizations] = useState(
+    organizationsData.organizations
+  );
   const [reviewOrganizations, setReviewOrganizations] = useState([
     {
-      name: "Org Three",
-      email: "org3@example.com",
-      description: "Focused on tree plantation.",
+      name: "EcoSprout Foundation",
+      email: "contact@ecosprout.org",
+      description:
+        "Dedicated to promoting sustainable agriculture and reforestation efforts worldwide.",
     },
     {
-      name: "Org Four",
-      email: "org4@example.com",
-      description: "Working on water conservation.",
+      name: "AquaVibe Initiative",
+      email: "info@aquavibe.org",
+      description:
+        "A non-profit organization focused on conserving water resources and promoting efficient water use in urban areas.",
     },
   ]);
 
@@ -23,7 +27,9 @@ const DashCompo = () => {
     fetch("/path/to/orgs.json")
       .then((response) => response.json())
       .then((data) => {
-        const approvedOrgs = data.organizations.filter(org => org.status === 'Approved');
+        const approvedOrgs = data.organizations.filter(
+          (org) => org.status === "Approved"
+        );
         setOrganizations(approvedOrgs);
       });
   }, []);
@@ -63,7 +69,6 @@ const DashCompo = () => {
               <th className="px-4 py-2 text-left">Organization Name</th>
               <th className="px-4 py-2 text-left">Email</th>
               <th className="px-4 py-2 text-left">Contact</th>
-              <th className="px-4 py-2 text-left">Status</th>
             </tr>
           </thead>
           <tbody>
@@ -81,12 +86,7 @@ const DashCompo = () => {
                 <td className="px-4 py-2">
                   {org.email || "dummy@example.com"}
                 </td>
-                <td className="px-4 py-2">
-                  {org.contact || "N/A"}
-                </td>
-                <td className="px-4 py-2">
-                  {org.status || "Pending"}
-                </td>
+                <td className="px-4 py-2">{org.contact || "N/A"}</td>
               </tr>
             ))}
           </tbody>

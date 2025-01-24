@@ -5,13 +5,14 @@ const ProjectTable = () => {
     { name: "Solar Panels", status: "Active", raised: "15,000", goal: "75%" },
     { name: "Community Garden", status: "Completed", raised: "8,000", goal: "100%" },
     { name: "Recycling Program", status: "Active", raised: "5,000", goal: "50%" },
-    { name: "Recycling Program", status: "Active", raised: "5,000", goal: "50%" },
-    { name: "Recycling Program", status: "Active", raised: "5,000", goal: "50%" },
-    { name: "Recycling Program", status: "Active", raised: "5,000", goal: "50%" },
-    { name: "Recycling Program", status: "Active", raised: "5,000", goal: "50%" },
-    { name: "Recycling Program", status: "Active", raised: "5,000", goal: "50%" },
-    { name: "Recycling Program", status: "Active", raised: "5,000", goal: "50%" },
-  ];
+    { name: "Urban Farming", status: "Active", raised: "3,500", goal: "60%" },
+    { name: "Water Conservation", status: "Completed", raised: "7,000", goal: "100%" },
+    { name: "Green Energy", status: "Active", raised: "4,500", goal: "40%" },
+    { name: "Waste Reduction", status: "Active", raised: "2,000", goal: "30%" },
+    { name: "Reforestation", status: "Completed", raised: "6,000", goal: "100%" },
+    { name: "Sustainable Housing", status: "Active", raised: "8,500", goal: "65%" },
+    { name: "Clean Water Initiative", status: "Active", raised: "10,000", goal: "70%" },
+];
 
   return (
     <div className="bg-white shadow rounded-lg p-4 max-h-80 overflow-y-auto">

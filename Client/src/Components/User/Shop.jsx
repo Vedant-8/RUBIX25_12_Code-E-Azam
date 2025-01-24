@@ -7,6 +7,9 @@ const Shop = () => {
   const [searchText, setSearchText] = useState("");
   const [cartItems, setCartItems] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [isPaymentModalOpen, setIsPaymentModalOpen] = useState(false);
+  const [paymentSuccess, setPaymentSuccess] = useState(false);
+  const [showNotification, setShowNotification] = useState(false);
 
   const filteredProducts = productsData.products.filter((product) =>
     product.name.toLowerCase().includes(searchText.toLowerCase())
@@ -65,6 +68,23 @@ const Shop = () => {
     (total, item) => total + item.price * item.quantity,
     0
   );
+
+  const handleBuyNowClick = () => {
+    setIsPaymentModalOpen(true);
+  };
+
+  const handlePayment = () => {
+    // Simulate a successful payment
+    setPaymentSuccess(true);
+    setCartItems([]); // Clear the cart after successful payment
+    setIsPaymentModalOpen(false);
+    // Show success notification
+    setShowNotification(true);
+    // Hide notification after 3 seconds
+    setTimeout(() => {
+      setShowNotification(false);
+    }, 3000);
+  };
 
   return (
     <>
@@ -180,7 +200,10 @@ const Shop = () => {
                   <div className="font-semibold text-lg">Total:</div>
                   <div className="text-green-600 text-lg">₹{totalPrice.toFixed(2)}</div>
                 </div>
-                <button className="w-full py-2 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-lg mt-4">
+                <button
+                  className="w-full py-2 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-lg mt-4"
+                  onClick={handleBuyNowClick}
+                >
                   Buy Now
                 </button>
               </div>
@@ -214,6 +237,46 @@ const Shop = () => {
           ))}
         </div>
       </div>
+
+      {/* Payment Modal */}
+      {isPaymentModalOpen && (
+        <div className="fixed top-0 left-0 right-0 bottom-0 flex justify-center items-center bg-gray-800 bg-opacity-50 z-50">
+          <div className="bg-white p-6 rounded-lg w-96">
+            <h3 className="text-xl font-semibold mb-4">Payment</h3>
+            <p className="mb-4">Total: ₹{totalPrice.toFixed(2)}</p>
+            <button
+              className="w-full py-2 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-lg"
+              onClick={handlePayment}
+            >
+              Pay
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Stylish Success Notification */}
+      {showNotification && (
+        <div
+          className="fixed bottom-4 left-1/2 transform -translate-x-1/2 bg-green-600 text-white p-4 rounded-lg shadow-lg flex items-center space-x-2 animate-fadeIn"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6 text-white"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M9 12l2 2 4-4M5 12a7 7 0 0114 0 7 7 0 01-14 0z"
+            />
+          </svg>
+          <span>Payment successful! Order will be delivered soon, more updates will be sent on your email.</span>
+        </div>
+      )}
+
       <Footer />
     </>
   );

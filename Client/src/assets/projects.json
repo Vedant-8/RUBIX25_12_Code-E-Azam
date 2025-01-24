@@ -56,7 +56,7 @@
     "short_description": "Providing clean drinking water solutions to underprivileged areas of Mumbai.",
     "location": "Mumbai, India",
     "funding_goal": 100000,
-    "funding_received": 75000,
+    "funding_received": 100000,
     "co2_reduction": 0,
     "trees_planted": 0,
     "water_saved": 200000,
@@ -91,51 +91,6 @@
   },
   {
     "id": "3",
-    "name": "Mumbai Solar Empowerment Initiative",
-    "description": [
-      "Focuses on installing solar panels in low-income areas to provide affordable energy.",
-      "Aims to reduce the cost of energy for local residents while contributing to clean energy goals.",
-      "Trains local technicians in solar panel installation and maintenance to create long-term employment.",
-      "Supports energy independence by promoting renewable sources of energy."
-    ],
-    "short_description": "Installing solar panels in low-income areas for affordable and clean energy.",
-    "location": "Mumbai, India",
-    "funding_goal": 150000,
-    "funding_received": 80000,
-    "co2_reduction": 120000,
-    "trees_planted": 0,
-    "water_saved": 0,
-    "volunteers": [
-      "Meena Kapoor",
-      "Sandeep Joshi"
-    ],
-    "volunteer_requirement": true,
-    "updates": [
-      {
-        "date": "2025-01-18",
-        "description": "Installed solar panels in 5 slums in Malad.",
-        "media": [
-          "solar_install_1.jpg"
-        ]
-      },
-      {
-        "date": "2025-01-20",
-        "description": "Started training local technicians to maintain solar systems.",
-        "media": [
-          "solar_training_1.jpg"
-        ]
-      },
-      {
-        "date": "2025-01-22",
-        "description": "Expanded solar panel installation to 3 additional localities in Andheri.",
-        "media": [
-          "solar_install_2.jpg"
-        ]
-      }
-    ]
-  },
-  {
-    "id": "4",
     "name": "Mumbai Waste Management Reform",
     "description": [
       "Improving waste management and recycling practices in Mumbai's urban areas.",
@@ -180,7 +135,7 @@
     ]
   },
   {
-    "id": "5",
+    "id": "4",
     "name": "Recycled Materials School Initiative",
     "description": [
       "Promotes sustainability in schools by educating students about recycling and eco-friendly practices.",
@@ -191,7 +146,7 @@
     "short_description": "Promoting recycling and sustainability in schools through education and activities.",
     "location": "Mumbai, India",
     "funding_goal": 40000,
-    "funding_received": 25000,
+    "funding_received": 40000,
     "co2_reduction": 5000,
     "trees_planted": 200,
     "water_saved": 0,
@@ -225,7 +180,7 @@
     ]
   },
   {
-    "id": "6",
+    "id": "5",
     "name": "Mumbai Beach Clean-Up Initiative",
     "description": [
       "Organizing clean-up drives on Mumbai’s beaches to remove plastic waste.",
@@ -270,7 +225,7 @@
     ]
   },
   {
-    "id": "7",
+    "id": "6",
     "name": "Sustainable Transport for Mumbai",
     "description": [
       "Promotes the adoption of electric vehicles (EVs) and bicycles to reduce air pollution and traffic congestion.",
@@ -315,7 +270,7 @@
     ]
   },
   {
-    "id": "8",
+    "id": "7",
     "name": "Mumbai Clean Air Project",
     "description": [
       "Aims to reduce air pollution by promoting cleaner technologies and encouraging the use of eco-friendly transport.",
@@ -360,7 +315,7 @@
     ]
   },
   {
-    "id": "9",
+    "id": "8",
     "name": "Mumbai Urban Farming Initiative",
     "description": [
       "Promotes urban farming to encourage local food production and reduce dependency on external sources.",
@@ -371,7 +326,7 @@
     "short_description": "Promoting urban farming for local food production and sustainable practices.",
     "location": "Mumbai, India",
     "funding_goal": 80000,
-    "funding_received": 50000,
+    "funding_received": 80000,
     "co2_reduction": 15000,
     "trees_planted": 0,
     "water_saved": 30000,
