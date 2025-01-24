@@ -204,7 +204,7 @@ export const PlinkoBoard = () => {
                         severity="success" 
                         sx={{ width: '100%' }}
                     >
-                        {donatedProject && `You donated $${donationAmount} to ${donatedProject.name}!`}
+                        {donatedProject && `You donated ₹${donationAmount} to ${donatedProject.name}!`}
                     </Alert>
                 </Snackbar>
             </Container>

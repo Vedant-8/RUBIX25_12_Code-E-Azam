@@ -34,10 +34,8 @@ import {
   FaInstagram,
   FaImage,
   FaCalendarAlt,
-  FaLinkedinIn,
   FaTimes
 } from "react-icons/fa";
-import { FaTiktok } from "react-icons/fa6";
 import { SiX } from "react-icons/si";
 import PostTimelineCard from "./PostTimeLineCard";
 import { baseURL } from "../utils/constants";
@@ -105,7 +103,8 @@ const SocialPostingForm = () => {
       const response = await fetch(`${baseURL}/api/post-history`);
       if (response.ok) {
         const data = await response.json();
-        setPostHistory(data);
+        // Ensure data is an array
+        setPostHistory(Array.isArray(data) ? data : []);
       } else {
         throw new Error("Failed to fetch post history");
       }
@@ -167,7 +166,6 @@ const SocialPostingForm = () => {
         setMediaPreview(null);
         setMediaType(null);
         setScheduledDate(null);
-        console.log("Post result:", result);
         fetchPostHistory(); // Refresh the post history
       } else {
         throw new Error("Failed to submit post");
@@ -342,16 +340,20 @@ const SocialPostingForm = () => {
           <Spinner />
         ) : (
           <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={4}>
-            {filteredPostHistory.map((post) => (
-              <PostTimelineCard
-                key={
-                  post.id ||
-                  post._id ||
-                  `${post.createdAt}-${post.platforms.join("-")}`
-                }
-                post={post}
-              />
-            ))}
+            {filteredPostHistory.length > 0 ? (
+              filteredPostHistory.map((post) => (
+                <PostTimelineCard
+                  key={
+                    post.id ||
+                    post._id ||
+                    `${post.createdAt}-${post.platforms.join("-")}`
+                  }
+                  post={post}
+                />
+              ))
+            ) : (
+              <Text>No posts found</Text>
+            )}
           </SimpleGrid>
         )}
       </Box>

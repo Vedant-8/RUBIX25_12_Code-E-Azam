@@ -1,18 +1,16 @@
 import express from "express";
 import multer from "multer";
 import axios from "axios";
-import { config } from "dotenv";
-import { env } from "process";
 import fs from "fs";
 import FormData from "form-data";
 import cors from "cors";
 
 const BASE_AYRSHARE = "https://api.ayrshare.com/api";
 
-console.log("Ayrshare API Key:", process.env.AYRSHARE_API_KEY);
+// Directly added API key (replace with your actual key)
+const AYRSHARE_API_KEY = ""; 
 
-
-config(); // Load environment variables
+console.log("Ayrshare API Key:", AYRSHARE_API_KEY);
 
 const corsOptions = {};
 
@@ -53,7 +51,7 @@ async function uploadMediaToAyrshare(file) {
     const response = await axios.post(`${BASE_AYRSHARE}/upload`, formData, {
       headers: {
         "Content-Type": "multipart/form-data",
-        Authorization: `Bearer ${process.env.AYRSHARE_API_KEY}`
+        Authorization: `Bearer ${AYRSHARE_API_KEY}`  // Direct API key usage
       }
     });
 
@@ -105,7 +103,7 @@ app.post("/api/post", upload.single("media"), async (req, res) => {
     const response = await axios.post(`${BASE_AYRSHARE}/post`, postData, {
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${process.env.AYRSHARE_API_KEY}`
+        Authorization: `Bearer ${AYRSHARE_API_KEY}`  // Direct API key usage
       }
     });
 
@@ -126,7 +124,7 @@ app.get("/api/post-history", async (req, res) => {
     const response = await axios.get(`${BASE_AYRSHARE}/history`, {
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${process.env.AYRSHARE_API_KEY}`
+        Authorization: `Bearer ${AYRSHARE_API_KEY}`  // Direct API key usage
       }
     });
 
@@ -158,7 +156,7 @@ app.get("/api/generate-jwt", async (req, res) => {
     const privateKey = await readPrivateKey(process.env.AYRSHARE_PRIVATE_KEY);
 
     const jwtData = {
-      domain: env.AYRSHARE_DOMAIN,
+      domain: process.env.AYRSHARE_DOMAIN,
       privateKey,
       profileKey: process.env.AYRSHARE_PROFILE_KEY,
       verify: true
@@ -170,7 +168,7 @@ app.get("/api/generate-jwt", async (req, res) => {
       {
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${process.env.AYRSHARE_API_KEY}`
+          Authorization: `Bearer ${AYRSHARE_API_KEY}`  // Direct API key usage
         }
       }
     );
@@ -191,7 +189,7 @@ app.get("/api/user-accounts", async (req, res) => {
     const response = await axios.get(`${BASE_AYRSHARE}/user`, {
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${process.env.AYRSHARE_API_KEY}`
+        Authorization: `Bearer ${AYRSHARE_API_KEY}`  // Direct API key usage
       }
     });
 

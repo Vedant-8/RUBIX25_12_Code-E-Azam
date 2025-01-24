@@ -46,7 +46,7 @@ const CostEstimation = () => {
 
       // Generate the prompt dynamically based on user input
       const prompt = `
-        Provide a concise summary of the following project's potential cost expenses in 200 words:
+        Provide a potential budget value in indian rupees which is affordable which will not exceed 5 lac rupees and followed by concise summary of the following project in 200 words:
         - Project Name: ${projectName}
         - Scope: ${projectScope}
         - Expected Duration: ${duration}
