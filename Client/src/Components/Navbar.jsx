@@ -14,18 +14,12 @@ const Navbar = () => {
     backgroundColor: "#ffffff", // White background
     color: "#007f3f", // Green text
     cursor: "pointer",
-    fontSize: "1rem",
+    fontSize: "1.2rem",
     fontWeight: "500",
     padding: "0.1rem 1.5rem",
     borderRadius: "0.5rem",
     transition: "all 0.3s ease-in-out",
     textTransform: "capitalize",
-    "&:hover": {
-      backgroundColor: "#e6f9e6", // Light green on hover
-      color: "#005f2f", // Darker green text on hover
-      transform: "scale(1.1)", // Slight scaling effect
-      boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)", // Subtle shadow
-    },
   }));
 
   return (

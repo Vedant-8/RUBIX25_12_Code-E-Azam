@@ -29,6 +29,8 @@ import Game from "./Utils/User/Games/Game";
 
 import ContentGenerator from "./Pages/Organization/ContentGenerator";
 
+import Home from "./Pages/Home";
+
 // Create a context for authentication
 export const AuthContext = createContext();
 
@@ -40,7 +42,7 @@ function App() {
       <Router>
         <Routes>
           {/* Public Routes */}
-          <Route path="/" element={<LandingPage />} />
+          <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
 

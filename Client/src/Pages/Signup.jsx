@@ -73,7 +73,9 @@ const Signup = () => {
     } catch (err) {
       console.error("Signup error:", err);
       console.error("Error response data:", err.response?.data);
-      setError(err.response?.data?.message || "Signup failed. Please try again.");
+      setError(
+        err.response?.data?.message || "Signup failed. Please try again."
+      );
     }
   };
 
@@ -81,13 +83,17 @@ const Signup = () => {
     <>
       <Navbar />
       <div className="min-h-screen bg-gradient-to-r from-emerald-400 to-green-500 flex justify-center items-center">
-        <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-lg">
-          <h2 className="text-2xl font-bold text-center text-emerald-800 mb-6">
+        <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-lg m-3">
+          <h2 className="text-2xl font-bold text-emerald-800 mb-6 text-center">
             Create an Account
           </h2>
+
           <form onSubmit={handleSignup}>
             <div className="mb-4">
-              <label className="block text-emerald-800 font-semibold mb-2" htmlFor="name">
+              <label
+                className="block text-emerald-800 font-semibold mb-2 text-left"
+                htmlFor="name"
+              >
                 Name
               </label>
               <input
@@ -100,7 +106,10 @@ const Signup = () => {
               />
             </div>
             <div className="mb-4">
-              <label className="block text-emerald-800 font-semibold mb-2" htmlFor="email">
+              <label
+                className="block text-emerald-800 font-semibold mb-2 text-left"
+                htmlFor="email"
+              >
                 Email
               </label>
               <input
@@ -113,7 +122,10 @@ const Signup = () => {
               />
             </div>
             <div className="mb-4">
-              <label className="block text-emerald-800 font-semibold mb-2" htmlFor="phno">
+              <label
+                className="block text-emerald-800 font-semibold mb-2 text-left"
+                htmlFor="phno"
+              >
                 Phone Number
               </label>
               <input
@@ -126,7 +138,10 @@ const Signup = () => {
               />
             </div>
             <div className="mb-4">
-              <label className="block text-emerald-800 font-semibold mb-2" htmlFor="role">
+              <label
+                className="block text-emerald-800 font-semibold mb-2 text-left"
+                htmlFor="role"
+              >
                 Role
               </label>
               <select
@@ -140,7 +155,10 @@ const Signup = () => {
               </select>
             </div>
             <div className="mb-4">
-              <label className="block text-emerald-800 font-semibold mb-2" htmlFor="password">
+              <label
+                className="block text-emerald-800 font-semibold mb-2 text-left"
+                htmlFor="password"
+              >
                 Password
               </label>
               <input
@@ -154,7 +172,7 @@ const Signup = () => {
             </div>
             <div className="mb-6">
               <label
-                className="block text-emerald-800 font-semibold mb-2"
+                className="block text-emerald-800 font-semibold mb-2 text-left"
                 htmlFor="confirmPassword"
               >
                 Confirm Password
@@ -175,8 +193,11 @@ const Signup = () => {
               Sign Up
             </button>
           </form>
+
           {error && <p className="text-center text-red-600 mt-4">{error}</p>}
-          {success && <p className="text-center text-green-600 mt-4">{success}</p>}
+          {success && (
+            <p className="text-center text-green-600 mt-4">{success}</p>
+          )}
           <p className="text-center text-emerald-600 mt-4">
             Already have an account?{" "}
             <a href="/login" className="text-teal-700 font-semibold">
