@@ -1,12 +1,32 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import { Box, Typography, Button, Grid, List, ListItem, Card, CardContent, Modal, TextField } from "@mui/material";
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
+import {
+  Box,
+  Typography,
+  Button,
+  Grid,
+  List,
+  ListItem,
+  Card,
+  CardContent,
+  Modal,
+  TextField,
+} from "@mui/material";
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+} from "recharts";
 import XIcon from "@mui/icons-material/X";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import projectsData from "../../assets/projects.json";
 import Navbar from "./Navbar";
 import Footer from "../Footer";
+import coin from "../../assets/1.png";
 
 const ProjectDetail = () => {
   const { id } = useParams();
@@ -14,6 +34,7 @@ const ProjectDetail = () => {
   const [openModal, setOpenModal] = useState(false);
   const [donationAmount, setDonationAmount] = useState("");
   const [showNotification, setShowNotification] = useState(false);
+  const [showCoinCard, setShowCoinCard] = useState(false);
 
   if (!project) {
     return <Typography variant="h4">Project not found</Typography>;
@@ -30,14 +51,16 @@ const ProjectDetail = () => {
   const handleDonateSubmit = () => {
     if (donationAmount && !isNaN(donationAmount) && donationAmount > 0) {
       setOpenModal(false);
-      setShowNotification(true);
+      setShowCoinCard(true);
       setDonationAmount(""); // Reset donation amount
-      // Hide the notification after 3 seconds
-      setTimeout(() => setShowNotification(false), 3000);
+      setTimeout(() => {
+        setShowCoinCard(false);
+        setShowNotification(true);
+        setTimeout(() => setShowNotification(false), 3000);
+      }, 3000); // Coin card disappears after 3 seconds
     }
   };
 
-  // Realistic data for the graph with more data points
   const chartData = [
     { month: "Jan", impact: 200 },
     { month: "Feb", impact: 110 },
@@ -62,10 +85,16 @@ const ProjectDetail = () => {
           <Grid item xs={12} sm={6}>
             <Card sx={{ boxShadow: 3, borderRadius: 2, padding: 2 }}>
               <CardContent>
-                <Typography variant="h3" sx={{ color: "green", fontWeight: "bold", mb: 2 }}>
+                <Typography
+                  variant="h3"
+                  sx={{ color: "green", fontWeight: "bold", mb: 2 }}
+                >
                   {project.name}
                 </Typography>
-                <Typography variant="h4" sx={{ mb: 2, color: "#757575", fontSize: "1.3rem" }}>
+                <Typography
+                  variant="h4"
+                  sx={{ mb: 2, color: "#757575", fontSize: "1.3rem" }}
+                >
                   <ul style={{ paddingLeft: "20px", listStyleType: "disc" }}>
                     {project.description.map((point, index) => (
                       <li key={index}>{point}</li>
@@ -92,7 +121,6 @@ const ProjectDetail = () => {
           <Grid item xs={12} sm={6}>
             <Card sx={{ boxShadow: 3, borderRadius: 2, padding: 2 }}>
               <CardContent>
-                {/* Funding Buttons */}
                 <Box sx={{ display: "flex", gap: 2, mb: 4 }}>
                   <Button
                     variant="contained"
@@ -120,8 +148,10 @@ const ProjectDetail = () => {
                   </Button>
                 </Box>
 
-                {/* Graph */}
-                <Typography variant="h5" sx={{ textAlign: "center", mb: 2, color: "green" }}>
+                <Typography
+                  variant="h5"
+                  sx={{ textAlign: "center", mb: 2, color: "green" }}
+                >
                   Project Impact
                 </Typography>
                 <ResponsiveContainer width="100%" height={250}>
@@ -174,8 +204,6 @@ const ProjectDetail = () => {
                     YouTube Video
                   </Button>
                 </Box>
-
-                {/* Video Link in a Card */}
                 <Box sx={{ display: "flex", justifyContent: "center" }}>
                   <iframe
                     title="YouTube Video"
@@ -195,7 +223,7 @@ const ProjectDetail = () => {
             </Card>
           </Grid>
 
-          {/* Section 5: Updates */}
+          {/* Section 4: Updates */}
           <Grid item xs={12} sm={6}>
             <Card sx={{ boxShadow: 3, borderRadius: 2, padding: 2 }}>
               <CardContent>
@@ -215,7 +243,10 @@ const ProjectDetail = () => {
                         flexDirection: "column",
                       }}
                     >
-                      <Typography variant="body2" sx={{ fontWeight: "bold", color: "green", mb: 1 }}>
+                      <Typography
+                        variant="body2"
+                        sx={{ fontWeight: "bold", color: "green", mb: 1 }}
+                      >
                         {update.date}
                       </Typography>
                       <Typography>{update.description}</Typography>
@@ -230,7 +261,16 @@ const ProjectDetail = () => {
 
       {/* Donation Modal */}
       <Modal open={openModal} onClose={handleCloseModal}>
-        <Box sx={{ padding: 4, width: "300px", margin: "auto", backgroundColor: "white", borderRadius: "8px", boxShadow: 3 }}>
+        <Box
+          sx={{
+            padding: 4,
+            width: "300px",
+            margin: "auto",
+            backgroundColor: "white",
+            borderRadius: "8px",
+            boxShadow: 3,
+          }}
+        >
           <Typography variant="h6" sx={{ marginBottom: 2 }}>
             Enter Donation Amount
           </Typography>
@@ -262,6 +302,36 @@ const ProjectDetail = () => {
           </Box>
         </Box>
       </Modal>
+
+      {/* Coin Card */}
+      {showCoinCard && (
+        <Box
+          sx={{
+            position: "fixed",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            backgroundColor: "white",
+            borderRadius: "16px",
+            padding: 4,
+            boxShadow: 3,
+            zIndex: 1300,
+          }}
+        >
+          <img
+            src={coin} // Ensure this path points to your coin image
+            alt="Coin"
+            style={{ width: "150px", height: "150px", marginBottom: "16px" }}
+          />
+          <Typography variant="h6" sx={{ color: "green" }}>
+            Thank you for your generous donation!
+          </Typography>
+        </Box>
+      )}
 
       {/* Success Notification */}
       {showNotification && (
